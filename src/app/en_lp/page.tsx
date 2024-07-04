@@ -2,99 +2,79 @@ import { Button } from '@/components/ui/button'
 import Typography from '../../components/ui/typography'
 import Image from 'next/image'
 import Feature from '../features'
-import { ArrowUpDown, Timer, Workflow } from 'lucide-react'
+import { ArrowRight, BookOpen, Shield } from 'lucide-react'
 import Link from 'next/link'
 import { Header } from '@/components/common/header'
 import { Footer } from '@/components/common/footer'
 
+
 export default function Home() {
   return (
     <>
-   <Header/>
-    <div
-      className="flex flex-col h-full md:py-36 md:px-32 pt-11 pb-24 px-8
-        w-full items-center text-center gap-12"
-    >
-      <div className="flex flex-col gap-6 items-center">
-        <Typography className="max-w-2xl" variant="h1">
-          Information you need during on-call emergencies
-        </Typography>
-        <Typography className="max-w-2xl" variant="h5">
-          Quickly link new on-call tickets to similar past
-          incidents and their solutions. All directly in
-          Slack the moment an incident happens.
-        </Typography>
-        <Link
-          href="/"
-        //   target="_blank"
-        >
-          <Button size="tiny" variant="ghost">
-            {`Get Started`}
-          </Button>
-        </Link>
-        <Image
-          width={1024}
-          height={632}
-          alt="Hero pg"
-          src="/hero1.png"
-        />
-      </div>
-      <div className="flex flex-col md:pt-24 md:gap-36 gap-24 items-center">
-        <div className="flex flex-col gap-12 items-center">
-          <Typography className="max-w-2xl" variant="h1">
-            Quick solutions, less stress
+      <Header />
+      <div className="flex flex-col h-full pt-11 pb-24 px-4 md:py-36 md:px-32 w-full items-center text-center gap-12">
+        <div className="flex flex-col gap-6 items-center">
+          <Typography className="max-w-lg md:max-w-2xl text-2xl md:text-4xl" variant="h1">
+            Your Personalized Roadmap to Success
           </Typography>
-          <div className="flex md:flex-row flex-col gap-12">
-            <Feature
-              icon={<Timer size={24} />}
-              headline="Fix emergencies fast"
-              description="Save 20-30 minutes per on-call ticket - no more searching for relevant issues and runbooks"
-            />
-            <Feature
-              icon={<ArrowUpDown size={24} />}
-              headline="Universally compatible"
-              description="Works with PagerDuty, Jira, or custom Slack alerts—Pandem integrates with any system"
-            />
-            <Feature
-              icon={<Workflow size={24} />}
-              headline="Secure for your org"
-              description="We keep your data safe by taking top security measures."
-            />
+          <Typography className="max-w-lg md:max-w-2xl text-base md:text-lg" variant="h5">
+          Your Blueprint for Success in Every Field. Achieve your dreams with a clear and structured plan.
+          </Typography>
+          <Link href="/get-started">
+            <Button size="tiny" variant="ghost">
+              Get Started
+            </Button>
+          </Link>
+          {/* <Image width={1024} height={632} alt="Hero image" src="/hero1.png" /> */}
+        </div>
+        <div className="flex flex-col md:pt-24 md:gap-36 gap-24 items-center">
+          <div className="flex flex-col gap-12 items-center">
+            <Typography className="max-w-lg md:max-w-2xl text-2xl md:text-4xl" variant="h1">
+              Why Choose Us?
+            </Typography>
+            <div className="flex flex-col md:flex-row gap-12 items-center">
+              <Feature
+                icon={<BookOpen size={24} />}
+                headline="Comprehensive Roadmaps"
+                description="From AI engineering to digital marketing, we provide detailed roadmaps for a variety of career paths."
+              />
+              <Feature
+                icon={<ArrowRight size={24} />}
+                headline="Step-by-Step Guidance"
+                description="Clear, actionable steps to help you progress from beginner to expert in your chosen field."
+              />
+              <Feature
+                icon={<Shield size={24} />}
+                headline="Secure and Private"
+                description="Your progress and personal data are safe with us, thanks to our top-notch security measures."
+              />
+            </div>
+          </div>
+          <div className="flex flex-col gap-6 max-w-lg md:max-w-2xl items-center">
+            <Typography className="max-w-lg md:max-w-2xl text-2xl md:text-4xl" variant="h1">
+              Easy to Start, Simple to Follow
+            </Typography>
+            <Typography className="max-w-lg md:max-w-2xl text-base md:text-lg" variant="p">
+              Sign up and start your journey immediately. Our intuitive platform ensures you stay on track and motivated.
+            </Typography>
+            {/* <Image width={1024} height={632} alt="Platform image" src="/platform.png" /> */}
+          </div>
+          <div className="flex flex-col gap-6 items-center">
+            <Typography className="max-w-lg md:max-w-2xl text-2xl md:text-4xl" variant="h1">
+              Get in Touch
+            </Typography>
+            <Typography className="max-w-lg md:max-w-2xl text-base md:text-lg">
+              Have questions or need support? Contact us to learn more or to book a demo.
+            </Typography>
+            <Link href="/contact">
+              <Button size="tiny" variant="ghost">
+                Contact Us
+              </Button>
+            </Link>
           </div>
         </div>
-        <div className="flex flex-col gap-6 max-w-2xl items-center">
-          <Typography className="max-w-2xl" variant="h1">
-            Instant setup, no custom code
-          </Typography>
-          <Typography className="max-w-2xl" variant="p">
-            Quickly link new on-call tickets to similar past
-            incidents and their solutions. All directly in
-            Slack the moment an incident happens.
-          </Typography>
-          <Image
-            width={1024}
-            height={632}
-            alt="Pandem.dev hero image"
-            src="/hero1.png"
-          />
-        </div>
-        <div className="flex flex-col gap-6 items-center">
-          <Typography className="max-w-2xl" variant="h1">
-            Get in touch
-          </Typography>
-          {/* <div>Book a demo, or hop on a call</div>
-          <Link
-            href="/"
-            // target="_blank"
-          >
-            <Button size="tiny" variant="ghost">
-              {`Book now`}
-            </Button>
-          </Link> */}
-        </div>
       </div>
-    </div>
-    <Footer/>
+      <Footer />
     </>
   )
 }

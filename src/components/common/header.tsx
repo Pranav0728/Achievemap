@@ -4,6 +4,8 @@ import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { usePathname } from 'next/navigation'
 import Typography from '@/components/ui/typography'
+import logoD from '../../images/logo.png'
+import logoW from '../../images/logow.png'
 import {
   Drawer,
   DrawerClose,
@@ -13,56 +15,46 @@ import {
 } from '@/components/ui/drawer'
 import { MenuIcon, X } from 'lucide-react'
 import { ModeToggle } from '../DLmode'
+import Image from 'next/image'
+import { useTheme } from "next-themes"
 
-interface SidebarProps
-  extends React.HTMLAttributes<HTMLDivElement> {}
+interface SidebarProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 export function Header({ className }: SidebarProps) {
-  const pathname = usePathname()
+  const { theme } = useTheme(); // Destructure theme from useTheme hook
+  const logo = theme === 'dark' ? logoW : logoD; // Conditionally select logo based on theme
+  const pathname = usePathname();
+  
   const items = [
     {
-      href: '/',
-      title: 'Roadmap',
-      openInNewTab: false
-    },
-    // { href: '#pricing', title: 'Features' },
-    {
-      href: 'mailto:myemail@.com',
+      href: 'mailto:pranavmolawade07@gmail.com',
       title: 'Contact Us'
     }
-  ]
+  ];
 
   const getLogo = () => (
     <Link href="/" className="pointer flex items-center">
-      <img src="/logo.svg" className="mr-3" />
-      <Typography className="!text-white !text-base font-medium ">
-        RoadMap
-      </Typography>
+      <Image alt='logo' src={logo} className="mr-3" width={50} height={50} />
     </Link>
-  )
+  );
 
   const getAuthButtons = () => (
     <div className="flex gap-3 items-center">
-      
-      <Link
-        href="/"
-        // target="_blank"
-      >
-        <Typography variant="p">Login</Typography>
+      <Link href="/" passHref>
+        <Typography variant="p" className="cursor-pointer">
+          Login
+        </Typography>
       </Link>
-      <Link
-        href="/"
-        // target="_blank"
-      >
+      <Link href="/" passHref>
         <Button size="tiny" color="ghost">
           <Typography variant="p">
             Sign Up
           </Typography>
         </Button>
       </Link>
-      <ModeToggle/>
+      <ModeToggle />
     </div>
-  )
+  );
 
   const getHeaderItems = () => {
     return (
@@ -70,17 +62,16 @@ export function Header({ className }: SidebarProps) {
         {items.map((item) => {
           const selected =
             pathname === item.href ||
-            pathname.includes(item.href)
+            pathname.includes(item.href);
           return (
             <Link
               href={item.href}
-              className="pointer block w-fit"
-              target={item.openInNewTab ? '_blank' : ''}
               key={item.title}
+              passHref
             >
               <Typography
                 variant="p"
-                className={cn(selected && 'text-primary')}
+                className={cn(selected && 'text-primary cursor-pointer')}
               >
                 {item.title}
               </Typography>
@@ -89,7 +80,7 @@ export function Header({ className }: SidebarProps) {
         })}
       </>
     )
-  }
+  };
 
   return (
     <div
@@ -99,13 +90,13 @@ export function Header({ className }: SidebarProps) {
         className
       )}
     >
-      <div className="w-full max-w-[1280px] md:px-8 px-4">
+      <div className="w-full max-w-[1000px] md:px-8 px-4">
         {/* Desktop */}
         <div className="flex items-center gap-x-8 w-full">
           <div className="md:flex-0 min-w-fit flex-1">
             {getLogo()}
           </div>
-          <div className="hidden md:flex flex items-center w-full">
+          <div className="hidden md:flex flex items-center w-full justify-between">
             <div className="flex items-center gap-x-8 flex-1">
               {getHeaderItems()}
             </div>
@@ -137,5 +128,5 @@ export function Header({ className }: SidebarProps) {
         </div>
       </div>
     </div>
-  )
+  );
 }
