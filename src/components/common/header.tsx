@@ -22,6 +22,7 @@ interface SidebarProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 export function Header({ className }: SidebarProps) {
   const { theme } = useTheme(); // Destructure theme from useTheme hook
+  
   const logo = theme === 'dark' ? logoW : logoD; // Conditionally select logo based on theme
   const pathname = usePathname();
   

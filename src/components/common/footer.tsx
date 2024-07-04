@@ -1,8 +1,14 @@
 'use client'
 import Link from 'next/link'
 import Typography from '../ui/typography'
+import { useTheme } from "next-themes"
+import logoD from '../../images/logo.png'
+import logoW from '../../images/logow.png'
+import Image from 'next/image'
 
 export function Footer() {
+  const { theme } = useTheme(); 
+  const logo = theme === 'dark' ? logoW : logoD; 
   return (
     <footer className="flex h-12 items-center justify-center w-full border-t">
       <div className="w-full max-w-[1000px] md:px-8 px-4 flex place-content-center">
@@ -11,7 +17,7 @@ export function Footer() {
             href="/"
             className="pointer flex items-center"
           >
-            <img src="/logo.svg" className="mr-3" />
+            <Image src={logo} alt='logo' width={50} height={50}/>
             <Typography className="!text-white !text-base font-medium ">
               Roadmap
             </Typography>
