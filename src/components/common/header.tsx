@@ -41,12 +41,12 @@ export function Header({ className }: SidebarProps) {
 
   const getAuthButtons = () => (
     <div className="flex gap-3 items-center">
-      <Link href="/" passHref>
+      <Link href="/signin" passHref>
         <Typography variant="p" className="cursor-pointer">
           Login
         </Typography>
       </Link>
-      <Link href="/" passHref>
+      <Link href="/signup" passHref>
         <Button size="tiny" color="ghost">
           <Typography variant="p">
             Sign Up

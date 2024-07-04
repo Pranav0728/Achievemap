@@ -20,7 +20,7 @@ export default function Home() {
           <Typography className="max-w-lg md:max-w-2xl text-base md:text-lg" variant="h5">
           Your Blueprint for Success in Every Field. Achieve your dreams with a clear and structured plan.
           </Typography>
-          <Link href="/get-started">
+          <Link href="/signin">
             <Button size="tiny" variant="ghost">
               Get Started
             </Button>
@@ -30,7 +30,7 @@ export default function Home() {
         <div className="flex flex-col md:pt-24 md:gap-36 gap-24 items-center">
           <div className="flex flex-col gap-12 items-center">
             <Typography className="max-w-lg md:max-w-2xl text-2xl md:text-4xl" variant="h1">
-              Why Choose Us?
+              Why AchieveMap?
             </Typography>
             <div className="flex flex-col md:flex-row gap-12 items-center">
               <Feature
