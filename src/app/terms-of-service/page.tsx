@@ -7,7 +7,7 @@ export default function Page() {
         Terms of Service
       </h1>
       <p className="mb-2">
-        <strong>Last updated:</strong> July 05, 2024
+        <strong>Last updated:</strong> February 06, 2024
       </p>
       <p className="mb-4">
         Please read these terms and conditions carefully
@@ -54,13 +54,12 @@ export default function Page() {
               third-party that may be displayed, included or
               made available by the Service.</li>
             <li><strong>Website</strong> refers to
-              Pandem, accessible from <Link href="https://achievemap.vercel.app" className="text-blue-600" target="_blank">https://achievemap.vercel.app</Link></li>
+              Pandem, accessible from <Link href={'https://achievemap.vercel.app'} className="text-blue-700"> https://achievemap.vercel.app </Link></li>
             <li><strong>You</strong> means the individual accessing or using the
               Service, or the company, or other legal entity on
               behalf of which such individual is accessing or
               using the Service, as applicable.</li>
           </ul>
-
       </section>
 
       <section>
@@ -142,7 +141,7 @@ export default function Page() {
           suppliers under any provision of this Terms and Your
           exclusive remedy for all of the foregoing shall be
           limited to the amount actually paid by You through
-          the Service or 100 USD if You haven't purchased
+          the Service or 100 USD if You haven&apos;t purchased
           anything through the Service. To the maximum extent
           permitted by applicable law, in no event shall the
           Company or its suppliers be liable for any special,
@@ -162,7 +161,7 @@ export default function Page() {
           limitation of liability for incidental or
           consequential damages, which means that some of the
           above limitations may not apply. In these states,
-          each party's liability will be limited to the
+          each party&apos;s liability will be limited to the
           greatest extent permitted by law.
         </p>
       </section>
@@ -195,7 +194,7 @@ export default function Page() {
           reliability standards or be error free or that any
           errors or defects can or will be corrected. Without
           limiting the foregoing, neither the Company nor any
-          of the company's provider makes any representation or
+          of the company&apos;s provider makes any representation or
           warranty of any kind, express or implied: (i) as to
           the operation or availability of the Service, or the
           information, content, and materials or products
@@ -263,7 +262,7 @@ export default function Page() {
         <p>
           Except as provided herein, the failure to exercise a
           right or to require performance of an obligation
-          under these Terms shall not affect a party's ability
+          under these Terms shall not affect a party&apos;s ability
           to exercise such right or require such performance
           at any time thereafter nor shall the waiver of a
           breach constitute a waiver of any subsequent breach.
@@ -313,7 +312,7 @@ export default function Page() {
           <li>
             By email:{' '}
             <a
-              href="mailto:myemail@gmail.com"
+              href="mailto:pranavmolawde07@gmail.com"
               className="text-blue-600 hover:underline"
             >
               pranavmolawade07@gmail.com
