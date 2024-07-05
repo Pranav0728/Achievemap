@@ -18,6 +18,7 @@ import { ModeToggle } from '../DLmode'
 import Image from 'next/image'
 import { useTheme } from "next-themes"
 import { signOut } from 'next-auth/react'
+import Profile from './Profile'
 
 interface SidebarProps extends React.HTMLAttributes<HTMLDivElement> {}
 
@@ -56,12 +57,16 @@ export function HomeHeader({ className }: SidebarProps) {
     //   </Link>
     //   <ModeToggle />
     // </div>
-    <Button size="tiny" color="ghost" onClick={()=>signOut()}>
+    <>
+    <Profile/>
+    <Button className='mx-2' size="tiny" color="" onClick={()=>signOut()}>
         <Typography variant="p">
           Sign Out
         </Typography>
-  
     </Button>
+    <ModeToggle/>
+
+    </>
   );
 
   const getHeaderItems = () => {

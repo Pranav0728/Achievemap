@@ -11,6 +11,7 @@ import { ArrowRight, BookOpen, Shield } from 'lucide-react'
 import Link from 'next/link'
 import { HomeHeader } from '@/components/common/HomeHeader'
 import { useSession } from 'next-auth/react'
+import Profile from '@/components/common/Profile'
 
 
 export default function Page() {
@@ -21,10 +22,6 @@ export default function Page() {
     <div className="flex flex-col h-full  w-full items-center text-center gap-12">
         <ul>
           <li>Roadmap Page</li>
-          {session?.user?.name}
-          <br />
-          {session?.user?.email}
-          {session?.user?.image}
         </ul>
       </div>
     <Footer/>

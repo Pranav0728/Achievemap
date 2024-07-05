@@ -7,6 +7,7 @@ import { Icons } from "../components/ui/icons"
 import { Button } from "../components/ui/button"
 import { Input } from "../components/ui/input"
 import { Label } from "../components/ui/label"
+import { signIn } from "next-auth/react"
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 
@@ -18,11 +19,13 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
   const [password, setPassword] = React.useState<string>("")
   const [error, setError] = React.useState<string>("")
 
+  const googleClicked =()=>{
+    signIn('google')
+  }
+
   async function onSubmit(event: React.SyntheticEvent) {
     event.preventDefault()
     setIsLoading(true)
-    console.log(name,email, password)
-
     try {
       const res = await fetch("/api/users", {
         method: "POST",
@@ -116,7 +119,7 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
           </span>
         </div>
       </div>
-      <Button variant="outline" type="button" disabled={isLoading}>
+      <Button variant="outline" type="button" disabled={isLoading} onClick={googleClicked}>
         {isLoading ? (
           <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
         ) : (
