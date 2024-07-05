@@ -13,7 +13,7 @@ import { HomeHeader } from '@/components/common/HomeHeader'
 import { useSession } from 'next-auth/react'
 
 
-export default function page() {
+export default function Page() {
   const {data : session} = useSession()
   return (
     <Container>
