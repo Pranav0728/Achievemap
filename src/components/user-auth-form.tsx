@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-
+import { useRouter } from "next/navigation"
 import { cn } from "@/lib/utils"
 import { Icons } from "../components/ui/icons"
 import { Button } from "../components/ui/button"
@@ -11,6 +11,7 @@ import { Label } from "../components/ui/label"
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
+  const router = useRouter()
   const [isLoading, setIsLoading] = React.useState<boolean>(false)
   const [name, setName] = React.useState<string>("")
   const [email, setEmail] = React.useState<string>("")
@@ -25,6 +26,7 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
     setTimeout(() => {
       setIsLoading(false)
     }, 3000)
+    router.replace('/signin')
   }
 
   return (

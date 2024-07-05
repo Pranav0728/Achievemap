@@ -17,7 +17,7 @@ export default function AuthenticationPageSignin() {
     <>
 
       <div className="container relative h-[800px] flex-col items-center justify-center md:grid lg:max-w-none lg:grid-cols-2 lg:px-0">
-        <Link
+        {/* <Link
           href="/signup"
           className={cn(
             buttonVariants({ variant: "ghost" }),
@@ -25,7 +25,7 @@ export default function AuthenticationPageSignin() {
           )}
         >
           Register
-        </Link>
+        </Link> */}
         <div className="relative hidden h-screen flex-col bg-muted p-10 text-white lg:flex dark:border-r">
           <div className="absolute inset-0 bg-zinc-900" />
           <div className="relative z-20 flex items-center text-lg font-medium">

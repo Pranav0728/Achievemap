@@ -35,7 +35,7 @@ export function Header({ className }: SidebarProps) {
 
   const getLogo = () => (
     <Link href="/" className="pointer flex items-center">
-      <Image alt='logo' src={logo} className="mr-3" width={50} height={50} />
+      <Image alt='logo' src={logo} className="mr-3" width={50} height={50} priority />
     </Link>
   );
 
