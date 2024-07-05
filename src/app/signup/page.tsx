@@ -5,13 +5,20 @@ import Link from "next/link"
 import { cn } from "@/lib/utils"
 import { buttonVariants } from "../../components/ui/button"
 import { UserAuthForm } from "../../components/user-auth-form"
+import { getServerSession } from "next-auth"
+import { redirect } from "next/navigation"
+import { authOptions } from "../api/auth/[...nextauth]/route"
+
 
 export const metadata: Metadata = {
   title: "Authentication",
   description: "Authentication forms built using the components.",
 }
 
-export default function AuthenticationPageSignup() {
+
+export default async function AuthenticationPageSignup() {
+  const Session = await getServerSession(authOptions);
+  if(Session) redirect("/")
   return (
     <>
 

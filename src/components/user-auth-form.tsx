@@ -23,10 +23,27 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
     setIsLoading(true)
     console.log(name,email, password)
 
-    setTimeout(() => {
+    try {
+      const res = await fetch("/api/users", {
+        method: "POST",
+        body: JSON.stringify({ name, email, password }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+
+      if (!res.ok) {
+        const error = await res.json()
+        throw new Error(error.message)
+      }
+      router.replace('/signin')
       setIsLoading(false)
-    }, 3000)
-    router.replace('/signin')
+      
+    } catch (error) {
+      
+    }
+
+
   }
 
   return (

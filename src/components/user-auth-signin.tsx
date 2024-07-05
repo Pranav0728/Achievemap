@@ -7,6 +7,7 @@ import { Icons } from "../components/ui/icons"
 import { Button } from "../components/ui/button"
 import { Input } from "../components/ui/input"
 import { Label } from "../components/ui/label"
+import { signIn } from "next-auth/react"
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 
@@ -22,10 +23,23 @@ export function UserAuthFormSignin({ className, ...props }: UserAuthFormProps) {
     event.preventDefault()
     setIsLoading(true)
 
-    setTimeout(() => {
-      setIsLoading(false)
-    }, 3000)
-    router.replace('/')
+      try {
+        const res = await signIn("credentials", {
+          email,
+          password,
+          redirect: false,
+        })
+        if (!res?.ok) {
+          setIsLoading(false)
+          console.log("Invalid credential")
+          return;
+        }
+        setIsLoading(false)
+        router.replace('/')
+      } catch (error) {
+        setIsLoading(false)
+        console.log(error)
+      }
     
   }
 

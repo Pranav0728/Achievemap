@@ -1,21 +1,24 @@
 import { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
-
 import { cn } from "@/lib/utils"
 import { buttonVariants } from "../../components/ui/button"
 import { UserAuthForm } from "../../components/user-auth-form"
 import { UserAuthFormSignin } from "@/components/user-auth-signin"
+import { getServerSession } from "next-auth"
+import { redirect } from "next/navigation"
+import { authOptions } from "../api/auth/[...nextauth]/route"
 
 export const metadata: Metadata = {
   title: "Authentication",
   description: "Authentication forms built using the components.",
 }
 
-export default function AuthenticationPageSignin() {
+export default async function AuthenticationPageSignin() {
+  const Session = await getServerSession(authOptions);
+  if(Session) redirect("/")
   return (
     <>
-
       <div className="container relative h-[800px] flex-col items-center justify-center md:grid lg:max-w-none lg:grid-cols-2 lg:px-0">
         {/* <Link
           href="/signup"
