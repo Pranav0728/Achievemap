@@ -1,43 +1,57 @@
-'use client'
-import { cn } from '@/lib/utils'
-import Link from 'next/link'
-import { Button } from '@/components/ui/button'
-import { usePathname } from 'next/navigation'
-import Typography from '@/components/ui/typography'
-import logoD from '../../images/logo.png'
-import logoW from '../../images/logow.png'
+"use client";
+import { cn } from "@/lib/utils";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { usePathname } from "next/navigation";
+import Typography from "@/components/ui/typography";
+import logoD from "../../images/logo.png";
+import logoW from "../../images/logow.png";
 import {
   Drawer,
   DrawerClose,
   DrawerContent,
   DrawerHeader,
-  DrawerTrigger
-} from '@/components/ui/drawer'
-import { MenuIcon, X } from 'lucide-react'
-import { ModeToggle } from '../DLmode'
-import Image from 'next/image'
-import { useTheme } from "next-themes"
-import { signOut } from 'next-auth/react'
-import Profile from './Profile'
+  DrawerTrigger,
+} from "@/components/ui/drawer";
+import { MenuIcon, X } from "lucide-react";
+import { ModeToggle } from "../DLmode";
+import Image from "next/image";
+import { useTheme } from "next-themes";
+import { signOut, useSession } from "next-auth/react";
+import Profile from "./Profile";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { useState } from "react";
 
 interface SidebarProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 export function HomeHeader({ className }: SidebarProps) {
   const { theme } = useTheme(); // Destructure theme from useTheme hook
-  
-  const logo = theme === 'dark' ? logoW : logoD; // Conditionally select logo based on theme
+  const { data: session } = useSession();
+  const [isOpen, setIsOpen] = useState(false)
+
+  const handleAvatarClick = () => {
+    setIsOpen(!isOpen)
+  }
+  const logo = theme === "dark" ? logoW : logoD; // Conditionally select logo based on theme
   const pathname = usePathname();
-  
+
   const items = [
     {
-      href: 'mailto:pranavmolawade07@gmail.com',
-      title: 'Contact Us'
-    }
+      href: "mailto:pranavmolawade07@gmail.com",
+      title: "Contact Us",
+    },
   ];
 
   const getLogo = () => (
     <Link href="/" className="pointer flex items-center">
-      <Image alt='logo' src={logo} className="mr-3" width={50} height={50} priority />
+      <Image
+        alt="logo"
+        src={logo}
+        className="mr-3"
+        width={50}
+        height={50}
+        priority
+      />
     </Link>
   );
 
@@ -58,14 +72,21 @@ export function HomeHeader({ className }: SidebarProps) {
     //   <ModeToggle />
     // </div>
     <>
-    <Profile/>
-    <Button className='mx-2' size="tiny" color="" onClick={()=>signOut()}>
-        <Typography variant="p">
-          Sign Out
-        </Typography>
-    </Button>
-    <ModeToggle/>
-
+      <ModeToggle />
+      <div style={{ position: 'relative' }} className="mx-3">
+      <Avatar onClick={handleAvatarClick} style={{ cursor: 'pointer' }}>
+        {session?.user?.image ? (
+          <AvatarImage src={session.user.image} alt='profile_pic' />
+        ) : (
+          <AvatarFallback>CN</AvatarFallback>
+        )}
+      </Avatar>
+      {isOpen && (
+        <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg z-10  p-5">
+          <Profile />
+        </div>
+      )}
+    </div>
     </>
   );
 
@@ -74,25 +95,20 @@ export function HomeHeader({ className }: SidebarProps) {
       <>
         {items.map((item) => {
           const selected =
-            pathname === item.href ||
-            pathname.includes(item.href);
+            pathname === item.href || pathname.includes(item.href);
           return (
-            <Link
-              href={item.href}
-              key={item.title}
-              passHref
-            >
+            <Link href={item.href} key={item.title} passHref>
               <Typography
                 variant="p"
-                className={cn(selected && 'text-primary cursor-pointer')}
+                className={cn(selected && "text-primary cursor-pointer")}
               >
                 {item.title}
               </Typography>
             </Link>
-          )
+          );
         })}
       </>
-    )
+    );
   };
 
   return (
@@ -106,9 +122,7 @@ export function HomeHeader({ className }: SidebarProps) {
       <div className="w-full max-w-[1000px] md:px-8 px-4">
         {/* Desktop */}
         <div className="flex items-center gap-x-8 w-full">
-          <div className="md:flex-0 min-w-fit flex-1">
-            {getLogo()}
-          </div>
+          <div className="md:flex-0 min-w-fit flex-1">{getLogo()}</div>
           <div className="hidden md:flex flex items-center w-full justify-between">
             <div className="flex items-center gap-x-8 flex-1">
               {getHeaderItems()}
@@ -131,9 +145,7 @@ export function HomeHeader({ className }: SidebarProps) {
                       </div>
                     </DrawerClose>
                   </DrawerHeader>
-                  <div className="p-4 pb-0 space-y-4">
-                    {getHeaderItems()}
-                  </div>
+                  <div className="p-4 pb-0 space-y-4">{getHeaderItems()}</div>
                 </div>
               </DrawerContent>
             </Drawer>

@@ -1,51 +1,19 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import dbConnect from '../../../../lib/dbConnect';
 import User from '../../../../lib/models/users';
-import NextAuth from 'next-auth';
-import { NextAuthOptions } from 'next-auth';
-import CredentialsProvider from 'next-auth/providers/credentials';
+import NextAuth, { NextAuthOptions } from 'next-auth';
 import GoogleProvider from 'next-auth/providers/google';
-import bcrypt from 'bcryptjs';
+import GithubProvider from 'next-auth/providers/github';
 
 export const authOptions: NextAuthOptions = {
   providers: [
-    CredentialsProvider({
-      name: 'credentials',
-      credentials: {
-        email: { label: "Email", type: "email" },
-        password: { label: "Password", type: "password" }
-      },
-      async authorize(credentials) {
-        if (!credentials?.email || !credentials?.password) {
-          return null;
-        }
-
-        const { email, password } = credentials;
-
-        try {
-          await dbConnect();
-          const user = await User.findOne({ email });
-
-          if (!user) {
-            return null;
-          }
-
-          const passwordsMatch = await bcrypt.compare(password, user.password);
-
-          if (!passwordsMatch) {
-            return null;
-          }
-
-          return user;
-        } catch (error) {
-          console.error("Error: ", error);
-          return null;
-        }
-      },
-    }),
     GoogleProvider({
-      clientId: process.env.GOOGLE_CLIENT_ID,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+      clientId: process.env.GOOGLE_CLIENT_ID as string,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
+    }),
+    GithubProvider({
+      clientId: process.env.GITHUB_CLIENT_ID as string,
+      clientSecret: process.env.GITHUB_CLIENT_SECRET as string,
     })
   ],
   session: {
@@ -53,7 +21,28 @@ export const authOptions: NextAuthOptions = {
   },
   secret: process.env.NEXTAUTH_SECRET,
   pages: {
-    signIn:"/en_lp"
+    signIn: "/en_lp",
+  },
+  callbacks: {
+    async jwt({ token, user, account, profile }) {
+      if (account?.provider === 'google' || 'github' && profile) {
+        try {
+        await dbConnect();
+        const existingUser = await User.findOne({ email: user.email });
+        if (!existingUser) {
+          const newUser = new User({
+            email: user.email,
+            name: user.name,
+            image: user.image,
+          });
+          await newUser.save();
+        } 
+      } catch (error) {
+          console.log(error)
+      }
+      }
+      return token;
+    },
   },
 };
 
