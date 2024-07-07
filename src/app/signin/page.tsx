@@ -7,7 +7,7 @@ import { UserAuthForm } from "../../components/user-auth-form"
 import { UserAuthFormSignin } from "@/components/user-auth-signin"
 import { getServerSession } from "next-auth"
 import { redirect } from "next/navigation"
-import { authOptions } from "../api/auth/[...nextauth]/route"
+import { authOptions } from "../api/auth/[...nextauth]/option"
 
 export const metadata: Metadata = {
   title: "Authentication",
