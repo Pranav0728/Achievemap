@@ -25,25 +25,27 @@ export const authOptions: NextAuthOptions = {
   },
   callbacks: {
     async jwt({ token, user, account, profile }) {
-      if (account?.provider === 'google' || 'github' && profile) {
+      if ((account?.provider === 'google' || account?.provider === 'github') && profile) {
         try {
-        await dbConnect();
-        const existingUser = await User.findOne({ email: user.email });
-        if (!existingUser) {
-          const newUser = new User({
-            email: user.email,
-            name: user.name,
-            image: user.image,
-          });
-          await newUser.save();
-        } 
-      } catch (error) {
-          console.log(error)
-      }
+          await dbConnect();
+          const existingUser = await User.findOne({ email: user.email });
+          if (!existingUser) {
+            const newUser = new User({
+              email: user.email,
+              name: user.name,
+              image: user.image,
+            });
+            await newUser.save();
+          } 
+        } catch (error) {
+          console.log(error);
+        }
       }
       return token;
     },
   },
 };
+
 const handler = (req: NextApiRequest, res: NextApiResponse) => NextAuth(req, res, authOptions);
+
 export { handler as GET, handler as POST };
