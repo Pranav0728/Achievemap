@@ -8,28 +8,31 @@ import Link from "next/link";
 export default function Page() {
   return (
     <>
-      <HomeHeader />
-      <div className="flex flex-col h-full  w-full items-center gap-5 ">
-        <div className="flex flex-col h-full max-w-screen-md gap-5 md:p-10 p-8 border-x">
-          <Typography variant="h2">AI Engineer Roadmap</Typography>
-          <p>
-            Following is the roadmap to learning AI Engineer (also known as{" "}
-            <strong>ML Engineer</strong>) skills for a total beginner. It
-            includes FREE learning resources for technical skills (or tool
-            skills) and soft (or core) skills 🚀
-          </p>
-          <p>
-            Prerequisites: You must have skills or interests to build skills in
-            Coding and Math. Without these two you cannot become an AI engineer.
-          </p>
-          <p>
-            Total Duration: 8 Months (4 hours of study Every Day)
-            <br />
-            Also,{" "}
-            <strong>AIEngineer = Data Scientist + Software Engineer</strong>
-          </p>
-          <Image src={tool} width={1000} alt="tools" className="w-full" />
-          <section className="flex flex-col gap-5">
+      <Container>
+        <HomeHeader />
+        <div className="flex flex-col h-full w-full items-center px-5">
+          {/* <div className="md:max-w-screen-md md:px-10 p-8  "> */}
+          <section className="flex flex-col gap-5 max-w-screen-md p-5 md:p-10 border-x">
+            <Typography variant="h2">AI Engineer Roadmap</Typography>
+            <p>
+              Following is the roadmap to learning AI Engineer (also known as{" "}
+              <strong>ML Engineer</strong>) skills for a total beginner. It
+              includes FREE learning resources for technical skills (or tool
+              skills) and soft (or core) skills 🚀
+            </p>
+            <p>
+              Prerequisites: You must have skills or interests to build skills
+              in Coding and Math. Without these two you cannot become an AI
+              engineer.
+            </p>
+            <p>
+              Total Duration: 8 Months (4 hours of study Every Day)
+              <br />
+              Also,{" "}
+              <strong>AIEngineer = Data Scientist + Software Engineer</strong>
+            </p>
+            <Image src={tool} width={1000} alt="tools" className="w-full" />
+
             <Typography variant="h3">
               Week 1 and 2: Computer Science Fundamentals 💻
             </Typography>
@@ -71,8 +74,7 @@ export default function Page() {
                 if you have time and interest.
               </li>
             </ul>
-          </section>
-          <section className="flex flex-col gap-5">
+
             <Typography variant="h3">
               Week 3 and 4: Beginners Python 🐍
             </Typography>
@@ -176,8 +178,7 @@ export default function Page() {
                 Create a professional-looking LinkedIn profile.
               </li>
             </ul>
-          </section>
-          <section className="flex flex-col gap-5">
+
             <Typography variant="h3">
               Week 5 and 6: Data Structures and Algorithms in Python
             </Typography>
@@ -220,8 +221,7 @@ export default function Page() {
                 </Link>
               </li>
             </ul>
-          </section>
-          <section className="flex flex-col gap-5">
+
             <Typography variant="h3">Week 7, 8: Advanced Python</Typography>
             <hr />
             <Typography variant="h5">Topics</Typography>
@@ -369,8 +369,7 @@ export default function Page() {
                 and share them with your friend.
               </li>
             </ul>
-          </section>
-          <section className="flex flex-col gap-5">
+
             <Typography variant="h3">
               Week 9: Version Control (Git, GitHub)
             </Typography>
@@ -438,8 +437,7 @@ export default function Page() {
                 </li>
               </ul>
             </ul>
-          </section>
-          <section className="flex flex-col gap-5">
+
             <Typography variant="h3">Week 10, 11: SQL</Typography>
             <hr />
             <Typography variant="h5">Topics</Typography>
@@ -538,9 +536,7 @@ export default function Page() {
                 </a>
               </li>
             </ul>
-          </section>
 
-          <section className="flex flex-col gap-5">
             <Typography variant="h3">
               Week 12: Numpy, Pandas, Data Visualization
             </Typography>
@@ -691,8 +687,7 @@ export default function Page() {
                 Finish all exercises in Khan Academy course.
               </li>
             </ul>
-          </section>
-          <section className="flex flex-col gap-5">
+
             <Typography variant="h3">
               Week 17: Exploratory Data Analysis (EDA)
             </Typography>
@@ -874,8 +869,7 @@ export default function Page() {
                 Discord: Help people with at least 10 answers
               </li>
             </ul>
-          </section>
-          <section className="flex flex-col gap-5">
+
             <Typography variant="h3">Week 22: ML Ops ⚙️</Typography>
             <hr />
             <Typography variant="h5">Topics</Typography>
@@ -1027,8 +1021,7 @@ export default function Page() {
                 hashtag #dsroadmap24 for increased visibility.
               </li>
             </ul>
-          </section>
-          <section className="flex flex-col gap-5">
+
             <Typography variant="h3">Week 25, 26, 27: Deep Learning</Typography>
             <hr />
             <Typography variant="h5">Topics</Typography>
@@ -1110,7 +1103,7 @@ export default function Page() {
             <Typography variant="h3">
               Week 28, 29, 30: NLP or Computer Vision & GenAI 📃
             </Typography>
-              <hr />
+            <hr />
             <Typography variant="h5">
               Natural Language Processing (NLP)
             </Typography>
@@ -1242,8 +1235,9 @@ export default function Page() {
               </ul>
             </section>
           </section>
-        </div>
-      </div>
+          </div>
+        {/* </div> */}
+      </Container>
     </>
   );
 }

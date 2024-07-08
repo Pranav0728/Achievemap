@@ -22,7 +22,7 @@ export default function Page() {
   return (
     <Container>
       <HomeHeader />
-      <div className="flex flex-col h-full  w-full items-center text-center gap-5">
+      <div className="flex flex-col h-full w-full items-center text-center gap-5">
         <div className="mt-3">
           <Typography variant="h5">
             Unlock Your Career Path for Just ₹9! 🌟 Get Your Ultimate Roadmap Today!
