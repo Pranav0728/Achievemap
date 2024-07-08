@@ -25,7 +25,7 @@ export default function Page() {
       <div className="flex flex-col h-full w-full items-center text-center gap-5">
         <div className="mt-3">
           <Typography variant="h5">
-            Unlock Your Career Path for Just ₹9! 🌟 Get Your Ultimate Roadmap Today!
+            Unlock Your Career Path 🌟 Get Your Ultimate Roadmap Today!
           </Typography>
         </div>
         <div className="m-3">
