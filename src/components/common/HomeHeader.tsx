@@ -78,7 +78,7 @@ export function HomeHeader({ className }: SidebarProps) {
         {session?.user?.image ? (
           <AvatarImage src={session.user.image} alt='profile_pic' />
         ) : (
-          <AvatarFallback>CN</AvatarFallback>
+          <AvatarFallback>AV</AvatarFallback>
         )}
       </Avatar>
       {isOpen && (
