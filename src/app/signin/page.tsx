@@ -62,7 +62,7 @@ export default async function AuthenticationPageSignin() {
                 Welcome to Achievemap!
               </h1>
               <p className="text-sm text-muted-foreground">
-                Select provider to procide
+                Continue with
               </p>
             </div>
             <UserAuthFormSignin/>

@@ -1,43 +1,48 @@
-import { Button } from "@/components/ui/button";
-import Typography from "../../components/ui/typography";
-import Feature from "../features";
+import * as React from "react";
 import { ArrowRight, BookOpen, Shield } from "lucide-react";
 import Link from "next/link";
 import { Header } from "@/components/common/header";
 import { Footer } from "@/components/common/footer";
+import Typography from "../../components/ui/typography";
+import Feature from "../features";
+import { Button } from "@/components/ui/button";
+import CareerDropdown from "@/components/combobox";
 
 export default function Home() {
   return (
     <>
       <Header />
-      <div className="flex flex-col h-full pt-11 pb-24 px-4 md:py-26 md:px-32 w-full items-center text-center gap-12">
-        <div className="flex flex-col gap-6 items-center">
-          <Typography
-            className="max-w-lg md:max-w-2xl text-2xl md:text-4xl"
-            variant="h1"
-          >
-            Your Personalized Roadmap to Success
-          </Typography>
-          <Typography
-            className="max-w-lg md:max-w-2xl text-base md:text-lg"
-            variant="h5"
-          >
-            Your Blueprint for Success in Every Field. Achieve your dreams with
-            a clear and structured plan.
-          </Typography>
-          <Link href="/signin">
-            <Button size="tiny" variant="default">
-              Get Started
-            </Button>
-          </Link>
+      <div className="flex flex-col h-full pt-20 pb-24 px-4 md:py-26 md:px-32 w-full items-center text-center gap-12">
+        <Typography
+          className="max-w-lg md:max-w-2xl text-2xl md:text-4xl"
+          variant="h1"
+        >
+          Your Personalized Roadmap to Success
+        </Typography>
+        <div className="flex gap-6 items-center flex-col md:flex-row max-w-screen-lg">
+          <div className="flex flex-col gap-6 items-center">
+            <Typography
+              className="max-w-lg md:max-w-2xl text-base md:text-lg md:px-5"
+              variant="h5"
+            >
+              Your Blueprint for Success in Every Field. Achieve your dreams
+              with a clear and structured plan.
+            </Typography>
+            <CareerDropdown/>
+            <Link href="/signin">
+              <Button size="tiny" variant="default">
+                Get Started
+              </Button>
+            </Link>
+          </div>
           <video
             playsInline
             controls
-            width="640"
+            width="520"
             height="360"
             className="mt-6 mx-auto rounded-lg shadow-lg"
           >
-            <source src="/videos/Achievemap.mp4" type="video/mp4" />
+            <source src="/videos/Achievemap1.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
         </div>
@@ -49,7 +54,7 @@ export default function Home() {
             >
               Why AchieveMap?
             </Typography>
-            <div className="flex flex-col md:flex-row gap-12 items-center">
+            <div className="flex flex-col md:flex-row gap-12 items-center md:mb-20">
               <Feature
                 icon={<BookOpen size={24} />}
                 headline="Comprehensive Roadmaps"
@@ -67,7 +72,7 @@ export default function Home() {
               />
             </div>
           </div>
-          <div className="flex flex-col gap-6 max-w-lg md:max-w-2xl items-center">
+          <div className="flex flex-col gap-6 max-w-lg md:max-w-2xl items-center md:mb-20">
             <Typography
               className="max-w-lg md:max-w-2xl text-2xl md:text-4xl"
               variant="h1"
@@ -75,10 +80,10 @@ export default function Home() {
               Easy to Start, Simple to Follow
             </Typography>
             <Typography
-              className="max-w-lg md:max-w-2xl text-base md:text-lg"
+              className="max-w-lg md:max-w-2xl text-base md:text-lg mx-10"
               variant="p"
             >
-              Sign up and start your journey immediately. Our intuitive platform
+              Log in and start your journey immediately. Our intuitive platform
               ensures you stay on track and motivated.
             </Typography>
           </div>
@@ -93,7 +98,7 @@ export default function Home() {
               Have questions or need support? Contact us to learn more or to
               book a demo.
             </Typography>
-            <Link href="/contact">
+            <Link href="mailto:pranavmolawade07@gmail.com">
               <Button size="tiny" variant="ghost">
                 Contact Us
               </Button>
