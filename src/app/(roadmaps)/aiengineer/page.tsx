@@ -11,7 +11,6 @@ export default function Page() {
       <Container>
         <HomeHeader />
         <div className="flex flex-col h-full w-full items-center px-5">
-          {/* <div className="md:max-w-screen-md md:px-10 p-8  "> */}
           <section className="flex flex-col gap-5 w-full md:max-w-screen-md p-5 md:p-10 border-x">
             <Typography variant="h2">AI Engineer Roadmap</Typography>
             <p>
@@ -67,12 +66,6 @@ export default function Page() {
                   https://bit.ly/42DUXtW
                 </Link>
               </li>
-              <li className="m-1">
-                In the above course, only follow the first 4 sections (1)
-                Digital Information (2) The Internet (3) Programming (4)
-                Algorithms. Completing the remaining sections is optional. Do it
-                if you have time and interest.
-              </li>
             </ul>
 
             <Typography variant="h3">
@@ -126,17 +119,14 @@ export default function Page() {
                     https://bit.ly/3vmXrgw
                   </Link>
                 </li>
-              </ul>
-              <li className="m-1">Track B (Affordable Fees)</li>
-              <ul className="list-disc md:ml-10 ml-5">
                 <li className="m-1">
-                  Python course:{" "}
+                  Learn Python offical website:{" "}
                   <Link
                     className="text-blue-700"
                     target="_blank"
-                    href="https://codebasics.io/courses/python-for-beginner-and-intermediate-learners"
+                    href="https://bit.ly/3vmXrgw"
                   >
-                    https://codebasics.io/courses/python-for-beginner-and-intermediate-learners
+                    https://www.learnpython.org
                   </Link>
                 </li>
               </ul>
@@ -150,12 +140,6 @@ export default function Page() {
                     Have a clear profile picture and banner image.
                   </li>
                   <li className="m-1">Add tags such as: Open to work etc.</li>
-                  <li className="m-1">
-                    Use this LinkedIn Checklist to create a profile:{" "}
-                    <Link className="text-blue-700" target="_blank" href="#">
-                      Click here.
-                    </Link>
-                  </li>
                 </ul>
               </li>
             </ul>
@@ -176,6 +160,9 @@ export default function Page() {
               </li>
               <li className="m-1">
                 Create a professional-looking LinkedIn profile.
+              </li>
+              <li className="m-1">
+                Make 4-5 basic python projects
               </li>
             </ul>
 
@@ -270,7 +257,7 @@ export default function Page() {
                     target="blank"
                     href="https://www.linkedin.com/in/dalianaliu/"
                   >
-                    https://www.linkedin.com/in/dalianaliu/
+                    dalianaliu
                   </Link>
                 </li>
                 <li className="m-1">
@@ -280,7 +267,7 @@ export default function Page() {
                     target="blank"
                     href="https://www.linkedin.com/in/ntnaggarwal/"
                   >
-                    https://www.linkedin.com/in/ntnaggarwal/
+                    ntnaggarwal
                   </Link>
                 </li>
                 <li className="m-1">
@@ -290,7 +277,7 @@ export default function Page() {
                     target="blank"
                     href="https://www.linkedin.com/in/stevenouri/"
                   >
-                    https://www.linkedin.com/in/stevenouri/
+                    stevenouri
                   </Link>
                 </li>
                 <li className="m-1">
@@ -300,7 +287,7 @@ export default function Page() {
                     target="blank"
                     href="https://www.linkedin.com/in/dhavalsays/"
                   >
-                    https://www.linkedin.com/in/dhavalsays/
+                    dhavalsays
                   </Link>
                 </li>
                 <li className="m-1">Increase engagement.</li>
@@ -388,6 +375,16 @@ export default function Page() {
             <Typography variant="h5">Learning Resources</Typography>
             <ul className="list-disc md:mx-10">
               <li className="m-1">
+                Basic git and github:{" "}
+                <Link
+                  className="text-blue-700"
+                  target="blank"
+                  href="https://www.youtube.com/watch?v=SWYqp7iY_Tc"
+                >
+                  youtube video
+                </Link>
+              </li>
+              <li className="m-1">
                 YT playlist (codebasics):{" "}
                 <Link
                   className="text-blue-700"
@@ -459,7 +456,7 @@ export default function Page() {
             <Typography variant="h5">Learning Resources</Typography>
             <div className="flex flex-col gap-3 md:mx-10">
               <Typography variant="h5">Track A</Typography>
-              <ul className="list-disc ml-5">
+              <ul className="list-disc ml-5 text-blue-700">
                 <li>
                   <a
                     href="https://bit.ly/3WFku20"
@@ -497,46 +494,7 @@ export default function Page() {
                   </a>
                 </li>
               </ul>
-
-              <Typography variant="h5">Track B</Typography>
-              <ul className="list-disc ml-5">
-                <li>
-                  <a
-                    href="https://codebasics.io/courses/sql-beginner-to-advanced-for-data-professionals"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    SQL course for data professionals
-                  </a>
-                </li>
-              </ul>
             </div>
-
-            <Typography variant="h5">Assignment</Typography>
-            <ul className="list-disc md:mx-10">
-              <li className="m-1">
-                Participate in SQL resume project challenge on{" "}
-                <a
-                  href="https://codebasics.io/challenge/codebasics-resume-project-challenge/7"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  codebasics.io
-                </a>
-              </li>
-              <li className="m-1">
-                Make a LinkedIn post with a submission of your resume project
-                challenge. Sample post:{" "}
-                <a
-                  href="https://bit.ly/48Bg5mB"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Sample LinkedIn post
-                </a>
-              </li>
-            </ul>
-
             <Typography variant="h3">
               Week 12: Numpy, Pandas, Data Visualization
             </Typography>
@@ -545,7 +503,7 @@ export default function Page() {
             <div className="flex flex-col gap-3 md:mx-10">
               <Typography variant="h5">Numpy</Typography>
               <ul className="list-disc ml-5">
-                <li>
+                <li className="text-blue-700">
                   <a
                     href="https://bit.ly/3GTppa8"
                     target="_blank"
@@ -564,6 +522,7 @@ export default function Page() {
                     href="https://codebasics.io/courses/math-and-statistics-for-data-science"
                     target="_blank"
                     rel="noopener noreferrer"
+                    className="text-blue-700"
                   >
                     Math and Statistics for Data Science
                   </a>
@@ -613,8 +572,9 @@ export default function Page() {
               <ul className="list-disc ml-5">
                 <li>
                   Learn the above topics from this excellent Khan Academy course
-                  on statistics and probability.
+                  on statistics and probability: {" "}
                   <a
+                  className="text-blue-700"
                     href="https://www.khanacademy.org/math/statistics-probability"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -623,38 +583,41 @@ export default function Page() {
                   </a>
                 </li>
                 <li>
-                  When you have doubts, use StatQuest YouTube channel:
+                  When you have doubts, use StatQuest YouTube channel:{" "}
                   <a
                     href="https://www.youtube.com/@statquest"
                     target="_blank"
                     rel="noopener noreferrer"
+                    className="text-blue-700"
                   >
                     StatQuest YouTube channel
                   </a>
                 </li>
                 <li>
-                  Use this free YouTube playlist:
+                  Use this free YouTube playlist:{" "}
                   <a
                     href="https://bit.ly/3QrSXis"
                     target="_blank"
                     rel="noopener noreferrer"
+                    className="text-blue-700"
                   >
                     Free YouTube playlist
                   </a>
                 </li>
                 <li>
-                  Another great YouTube channel:
+                  Another great YouTube channel:{" "}
                   <a
                     href="https://www.youtube.com/@3blue1brown"
                     target="_blank"
                     rel="noopener noreferrer"
+                    className="text-blue-700"
                   >
                     3Blue1Brown YouTube channel
                   </a>
                 </li>
               </ul>
 
-              <Typography variant="h5">Track B (Affordable Fees)</Typography>
+              <Typography variant="h5">Track B (Affordable Fees){" "}</Typography>
               <ul className="list-disc ml-5">
                 <li>
                   Khan Academy course doesn’t have Python coding and it is
@@ -679,6 +642,7 @@ export default function Page() {
                   href="https://bit.ly/3QrSXis"
                   target="_blank"
                   rel="noopener noreferrer"
+                  className="text-blue-700"
                 >
                   Free YouTube playlist
                 </a>
@@ -699,21 +663,23 @@ export default function Page() {
               <ul className="list-disc ml-5">
                 <li>
                   Use this link to search for exploratory data analysis
-                  notebooks on Kaggle:
+                  notebooks on Kaggle:{" "}
                   <a
                     href="https://www.kaggle.com/code?searchQuery=exploratory+data+analysis"
                     target="_blank"
                     rel="noopener noreferrer"
+                    className="text-blue-700"
                   >
                     Kaggle EDA Notebooks
                   </a>
                 </li>
                 <li>
-                  Practice EDA using at least 3 datasets, for example:
+                  Practice EDA using at least 3 datasets, for example:{" "}
                   <a
                     href="https://www.kaggle.com/datasets/rishabhkarn/ipl-auction-2023/data"
                     target="_blank"
                     rel="noopener noreferrer"
+                    className="text-blue-700"
                   >
                     IPL Auction 2023 Dataset
                   </a>
@@ -794,8 +760,9 @@ export default function Page() {
               </Typography>
               <ul className="list-disc ml-5">
                 <li>
-                  First 21 videos:
+                  First 21 videos:{" "}
                   <a
+                    className="text-blue-700"
                     href="https://bit.ly/3io5qqX"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -805,10 +772,11 @@ export default function Page() {
                 </li>
               </ul>
 
-              <Typography variant="h5">Feature engineering playlist</Typography>
+              <Typography variant="h5">Feature engineering playlist{" "}</Typography>
               <ul className="list-disc ml-5">
                 <li>
                   <a
+                    className="text-blue-700"
                     href="https://bit.ly/3IFa3Yf"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -822,11 +790,12 @@ export default function Page() {
             <Typography variant="h5">Core/Soft Skills</Typography>
             <ul className="list-disc md:mx-10">
               <li className="m-1">
-                Project Management:
+                Project Management:{" "}
                 <ul className="list-disc ml-5">
                   <li>
-                    Scrum:
+                    Scrum:{" "}
                     <a
+                    className="text-blue-700"
                       href="https://scrumtrainingseries.com/"
                       target="_blank"
                       rel="noopener noreferrer"
@@ -835,8 +804,9 @@ export default function Page() {
                     </a>
                   </li>
                   <li>
-                    Kanban:
+                    Kanban:{" "}
                     <a
+                     className="text-blue-700"
                       href="https://youtu.be/jf0tlbt9lx0"
                       target="_blank"
                       rel="noopener noreferrer"
@@ -852,8 +822,9 @@ export default function Page() {
             <Typography variant="h5">Assignment</Typography>
             <ul className="list-disc md:mx-10">
               <li className="m-1">
-                Complete all exercises in ML playlist:
+                Complete all exercises in ML playlist:{" "}
                 <a
+                className="text-blue-700"
                   href="https://bit.ly/3io5qqX"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -890,6 +861,7 @@ export default function Page() {
                 <li>
                   FastAPI tutorial:{" "}
                   <a
+                  className="text-blue-700"
                     href="https://bit.ly/497p6Ex"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -900,6 +872,7 @@ export default function Page() {
                 <li>
                   Docker tutorial:{" "}
                   <a
+                  className="text-blue-700"
                     href="https://bit.ly/3uCNpeE"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -927,6 +900,7 @@ export default function Page() {
               <li>
                 YouTube playlist link:{" "}
                 <a
+                className="text-blue-700"
                   href="https://bit.ly/3ivycWr"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -947,6 +921,7 @@ export default function Page() {
               <li>
                 YouTube playlist link:{" "}
                 <a
+                className="text-blue-700"
                   href="https://bit.ly/3ioaMSU"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -962,6 +937,7 @@ export default function Page() {
               <li>
                 Resume tips and templates:{" "}
                 <a
+                className="text-blue-700"
                   href="https://www.youtube.com/watch?v=buQSI8NLOMw"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -981,6 +957,7 @@ export default function Page() {
                   <li>
                     Sample portfolio website:{" "}
                     <a
+                    className="text-blue-700"
                       href="http://rajag0pal.github.io/"
                       target="_blank"
                       rel="noopener noreferrer"
@@ -999,6 +976,7 @@ export default function Page() {
                 Use FastAPI instead of Flask in the above two projects. FastAPI
                 tutorial:{" "}
                 <a
+                className="text-blue-700"
                   href="https://youtu.be/Wr1JjhTt1Xg"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -1047,6 +1025,7 @@ export default function Page() {
               <ul className="list-disc ml-5">
                 <li>
                   <a
+                  className="text-blue-700"
                     href="https://bit.ly/3vOZ3zV"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -1062,6 +1041,7 @@ export default function Page() {
               <ul className="list-disc ml-5">
                 <li>
                   <a
+                  className="text-blue-700"
                     href="https://bit.ly/3TzDbWp"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -1077,6 +1057,7 @@ export default function Page() {
               <ul className="list-disc ml-5">
                 <li>
                   <a
+                  className="text-blue-700"
                     href="https://bit.ly/3QzkVJi"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -1125,10 +1106,11 @@ export default function Page() {
 
             <Typography variant="h5">Learning Resources</Typography>
             <div className="flex flex-col gap-3 md:mx-10">
-              <Typography variant="h5">NLP YouTube playlist</Typography>
+              <Typography variant="h5">NLP YouTube playlist{" "}</Typography>
               <ul className="list-disc ml-5">
                 <li>
                   <a
+                  className="text-blue-700"
                     href="https://bit.ly/3XnjfEZ"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -1158,6 +1140,7 @@ export default function Page() {
               <li className="m-1">
                 Complete exercises in the NLP playlist:{" "}
                 <a
+                className="text-blue-700"
                   href="https://bit.ly/3XnjfEZ"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -1187,6 +1170,7 @@ export default function Page() {
                 <ul className="list-disc ml-5">
                   <li>
                     <a
+                    className="text-blue-700"
                       href="https://bit.ly/3RYpxuw"
                       target="_blank"
                       rel="noopener noreferrer"
@@ -1217,20 +1201,7 @@ export default function Page() {
                   <li>Digesting</li>
                   <li>Implementing</li>
                   <li>Sharing</li>
-                </ul>
-                <li className="m-1">Group learning</li>
-                <ul className="list-disc ml-5">
-                  <li>
-                    Use partner-and-group-finder channel on codebasics discord
-                    server for group study and accountability.{" "}
-                    <a
-                      href="https://discord.gg/r42Kbuk"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Discord Server Link
-                    </a>
-                  </li>
+                <li >Group learning</li>
                 </ul>
               </ul>
             </section>
