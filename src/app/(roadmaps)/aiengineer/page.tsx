@@ -12,7 +12,7 @@ export default function Page() {
         <HomeHeader />
         <div className="flex flex-col h-full w-full items-center px-5">
           {/* <div className="md:max-w-screen-md md:px-10 p-8  "> */}
-          <section className="flex flex-col gap-5 max-w-screen-md p-5 md:p-10 border-x">
+          <section className="flex flex-col gap-5 w-full md:max-w-screen-md p-5 md:p-10 border-x">
             <Typography variant="h2">AI Engineer Roadmap</Typography>
             <p>
               Following is the roadmap to learning AI Engineer (also known as{" "}
