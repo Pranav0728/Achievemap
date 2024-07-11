@@ -42,7 +42,7 @@ export default function Page() {
               </CardHeader>
               <CardFooter className="flex justify-between">
               <Typography variant="p">
-                  Price: {data.price} rs/-
+                  Price: {data.price/100} rs/-
                   </Typography>
                 <Button onClick={(e)=>CheckOutClick(data.id)}>
                   <Typography variant="p">

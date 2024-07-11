@@ -7,6 +7,14 @@ import { HomeHeader } from "@/components/common/HomeHeader";
 import { Footer } from "@/components/common/footer";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import {
+  Select,
+  SelectTrigger,
+  SelectValue,
+  SelectContent,
+  SelectItem,
+} from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import Container from "@/components/container";
@@ -21,8 +29,7 @@ export default function CheckoutPage() {
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
   const router = useRouter();
-  const ogPrice = data?.price
-  const amount = ogPrice * 100;
+  const amount = data?.price
   
 
   const handlePurchase = async (e: any) => {
@@ -47,7 +54,7 @@ export default function CheckoutPage() {
             {data ? (
               <>
                 <h2 className="text-xl font-bold mb-4">{data.title} Roadmap</h2>
-                <p className="mb-4">Price: rs{data.price}/-</p>
+                <p className="mb-4">Price: rs{data.price/100}/-</p>
                 <p className="mb-4">{data.description}</p>
                 <form
                   className="grid grid-cols-2 gap-4"
@@ -93,7 +100,7 @@ export default function CheckoutPage() {
                 <div className="space-y-4">
                   <div className="flex justify-between">
                     <span>Subtotal</span>
-                    <span>Rs {data.price}</span>
+                    <span>Rs {data.price/100}</span>
                   </div>
                   <div className="flex justify-between">
                     <span>Extra charges</span>
@@ -101,7 +108,7 @@ export default function CheckoutPage() {
                   </div>
                   <div className="flex justify-between font-bold">
                     <span>Total</span>
-                    <span>Rs {data.price}</span>
+                    <span>Rs {data.price/100}</span>
                   </div>
                 </div>
                 <Separator className="my-4" />
@@ -111,7 +118,7 @@ export default function CheckoutPage() {
                       <p className="font-medium">{data.title} Roadmap</p>
                       <p className="text-gray-500">Quantity: 1</p>
                     </div>
-                    <p className="ml-auto font-medium">Rs {data.price}</p>
+                    <p className="ml-auto font-medium">Rs {data.price/100}</p>
                   </div>
                 </div>
               </>
