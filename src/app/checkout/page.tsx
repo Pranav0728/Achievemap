@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { Roadmap } from "@/components/roadmapData";
@@ -45,6 +45,9 @@ export default function CheckoutPage() {
   };
 
   return (
+    <Suspense fallback={<p>Loading feed...</p>}>
+
+    
     <div className="flex flex-col min-h-screen">
       <HomeHeader />
       <Container>
@@ -128,5 +131,6 @@ export default function CheckoutPage() {
         <Footer />
       </Container>
     </div>
+    </Suspense>
   );
 }
