@@ -18,6 +18,10 @@ import { Button } from "@/components/ui/button";
 import Typography from "@/components/ui/typography";
 
 export default function Page() {
+  const CheckOutClick =(id:String)=>{
+    console.log(id)
+    router.push(`/checkout?id=${id}`)
+  }
   const router = useRouter();
   return (
     <Container>
@@ -40,7 +44,7 @@ export default function Page() {
               <Typography variant="p">
                   Price: {data.price} rs/-
                   </Typography>
-                <Button onClick={()=>router.push(data.href)}>
+                <Button onClick={(e)=>CheckOutClick(data.id)}>
                   <Typography variant="p">
                   Unlock Roadmap
                   </Typography>

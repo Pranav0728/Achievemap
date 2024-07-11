@@ -34,7 +34,7 @@ export default function Page() {
               securities entitled to vote for election of
               directors or other managing authority.</li>
             <li><strong>Country</strong> refers to: India.</li>
-            <li><strong>Company</strong> (referred to as either the Company, We, Us or Our in this
+            <li><strong>Company</strong> (referred to as either the Company,I Pranav Sunil Molawade in this
               Agreement) refers to Achievemap.</li>
             <li><strong>Device</strong> means any device
               that can access the Service such as a computer, a
@@ -54,7 +54,7 @@ export default function Page() {
               third-party that may be displayed, included or
               made available by the Service.</li>
             <li><strong>Website</strong> refers to
-              Pandem, accessible from <Link href={'https://achievemap.vercel.app'} className="text-blue-700"> https://achievemap.vercel.app </Link></li>
+              Pandem, accessible from <Link href={'https://achievemap.vercel.app'} className="text-blue-700"> https://achievemap.vercel.app </Link> Owner: Pranav Sunil Molawade</li>
             <li><strong>You</strong> means the individual accessing or using the
               Service, or the company, or other legal entity on
               behalf of which such individual is accessing or

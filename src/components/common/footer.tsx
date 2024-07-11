@@ -18,19 +18,16 @@ export function Footer() {
             className="pointer flex items-center"
           >
             <Image src={logo} alt='logo' width={50} height={50}/>
-            <Typography className="!text-white !text-base font-medium ">
-              Roadmap
-            </Typography>
           </Link>
         </div>
         <div className="flex max-w-fit items-center gap-x-4">
           <Link
-            href="/"
+            href="/refund-policy"
             // target="_blank"
             className="pointer block w-fit flex-1"
           >
             <Typography variant="p" className="w-max">
-              Get a Roadmap
+              Refund Policy
             </Typography>
           </Link>
           <Link

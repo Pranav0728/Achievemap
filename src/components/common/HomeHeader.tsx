@@ -72,6 +72,22 @@ export function HomeHeader({ className }: SidebarProps) {
     //   <ModeToggle />
     // </div>
     <>
+        <div className="flex gap-3 items-center mx-2">
+      <Link href="/signin" passHref>
+      <Button size="tiny" color="ghost">
+        <Typography variant="p" >
+          Login
+        </Typography>
+      </Button>
+      </Link>
+      {/* <Link href="/signup" passHref>
+        <Button size="tiny" color="ghost">
+          <Typography variant="p">
+            Sign Up
+          </Typography>
+        </Button>
+      </Link> */}
+    </div>
       <ModeToggle />
       <div style={{ position: 'relative' }} className="mx-3">
       <Avatar onClick={handleAvatarClick} style={{ cursor: 'pointer' }}>
