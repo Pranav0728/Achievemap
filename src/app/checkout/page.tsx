@@ -7,14 +7,6 @@ import { HomeHeader } from "@/components/common/HomeHeader";
 import { Footer } from "@/components/common/footer";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import {
-  Select,
-  SelectTrigger,
-  SelectValue,
-  SelectContent,
-  SelectItem,
-} from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import Container from "@/components/container";
