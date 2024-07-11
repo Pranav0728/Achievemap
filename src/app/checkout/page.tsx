@@ -37,9 +37,6 @@ export default function CheckoutPage() {
   };
 
   return (
-    <Suspense fallback={<p>Loading feed...</p>}>
-
-    
     <div className="flex flex-col min-h-screen">
       <HomeHeader />
       <Container>
@@ -123,6 +120,5 @@ export default function CheckoutPage() {
         <Footer />
       </Container>
     </div>
-    </Suspense>
   );
 }
