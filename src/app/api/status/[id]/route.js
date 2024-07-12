@@ -7,7 +7,7 @@ export async function POST(req) {
   console.log(data);
 
   const status = data.get("code");
-  const merchantId = data.get("merchantId");
+  const merchantId = process.env.NEXT_PUBLIC_MERCHANT_ID;
   const transactionId = data.get("transactionId");
 
   const st = `/pg/v1/status/${merchantId}/${transactionId}${process.env.NEXT_PUBLIC_SALT_KEY}`;
@@ -18,7 +18,7 @@ export async function POST(req) {
 
   const options = {
     method: "GET",
-    url: `https://api-preprod.phonepe.com/apis/pg-sandbox/pg/v1/status/${merchantId}/${transactionId}`,
+    url: `https://api.phonepe.com/apis/hermes/pg/v1/status/${merchantId}/${transactionId}`,
     headers: {
       accept: "application/json",
       "Content-Type": "application/json",
