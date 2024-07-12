@@ -21,6 +21,7 @@ import { signOut, useSession } from "next-auth/react";
 import Profile from "./Profile";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useState } from "react";
+import { title } from "process";
 
 interface SidebarProps extends React.HTMLAttributes<HTMLDivElement> {}
 
@@ -37,9 +38,18 @@ export function HomeHeader({ className }: SidebarProps) {
 
   const items = [
     {
+      href:'/',
+      title: "Home",
+    },
+    {
+      href: "/services",
+      title: "Services",
+    },
+    {
       href: "mailto:pranavmolawade07@gmail.com",
       title: "Contact Us",
     },
+    
   ];
 
   const getLogo = () => (
@@ -73,13 +83,13 @@ export function HomeHeader({ className }: SidebarProps) {
     // </div>
     <>
         <div className="flex gap-3 items-center mx-2">
-      <Link href="/signin" passHref>
+      {/* <Link href="/signin" passHref>
       <Button size="tiny" color="ghost">
         <Typography variant="p" >
           Login
         </Typography>
       </Button>
-      </Link>
+      </Link> */}
       {/* <Link href="/signup" passHref>
         <Button size="tiny" color="ghost">
           <Typography variant="p">
@@ -89,7 +99,7 @@ export function HomeHeader({ className }: SidebarProps) {
       </Link> */}
     </div>
       <ModeToggle />
-      <div style={{ position: 'relative' }} className="mx-3">
+      {/* <div style={{ position: 'relative' }} className="mx-3">
       <Avatar onClick={handleAvatarClick} style={{ cursor: 'pointer' }}>
         {session?.user?.image ? (
           <AvatarImage src={session.user.image} alt='profile_pic' />
@@ -102,7 +112,7 @@ export function HomeHeader({ className }: SidebarProps) {
           <Profile />
         </div>
       )}
-    </div>
+    </div> */}
     </>
   );
 

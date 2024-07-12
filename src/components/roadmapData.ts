@@ -5,9 +5,10 @@ export const Roadmap = [
         description: 'Create smart systems that learn from data and make decisions to solve real-world problems.',
         href:"/roadmaps/aiengineer",
         duration: 'Varies',
-        price: 1900,
+        price: 29900,
         completed: false,
         buy: false,
+        src: "/images/Ai-Engineer.png"
     },
     {
         id:"H6bE7cLxA2P9",
@@ -15,9 +16,10 @@ export const Roadmap = [
         description: 'Data scientists analyze complex data to uncover insights that drive decision-making and innovation.',
         href:"/roadmaps/datascientist",
         duration: 'Varies',
-        price: 1900,
+        price: 49900,
         completed: false,
         buy: false,
+        src: "/images/DS.png"
     },
     // {
     //     id:"n8R4zK3Yt5Q1",

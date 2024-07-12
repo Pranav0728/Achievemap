@@ -75,7 +75,7 @@ export default function CheckoutPage() {
                   </div>
                   <div className="col-span-2 flex justify-end">
                     <Button type="submit" size="lg">
-                      Place Order (Dummy Payment)
+                      Place Order
                     </Button>
                   </div>
                   {error && <p className="col-span-2 text-red-500">{error}</p>}
