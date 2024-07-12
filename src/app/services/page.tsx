@@ -35,9 +35,9 @@ export default function Page() {
         </div>
         <div className="m-3">
           {Roadmap.map((data) => (
-            <div className="m-3 mt-5 flex flex-col md:flex-row justify-center w-full" key={data.id}>
-                <Image src={data.src} width={300} height={150} alt="Roadmap img"/>
-            <Card  className="w-full">
+            <div className="mt-5 flex flex-col md:flex-row justify-center w-full" key={data.id}>
+                <Image src={data.src} width={400} height={150} className="hidden sm:block rounded-lg md:rounded-r-none" alt="Roadmap img"/>
+            <Card  className="w-full rounded-r-lg">
               <CardHeader>
                 <CardTitle>{data.title} Roadmap</CardTitle>
                 <CardDescription>{data.description}</CardDescription>

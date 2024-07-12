@@ -99,7 +99,7 @@ export function HomeHeader({ className }: SidebarProps) {
       </Link> */}
     </div>
       <ModeToggle />
-      {/* <div style={{ position: 'relative' }} className="mx-3">
+      <div style={{ position: 'relative' }} className="mx-3">
       <Avatar onClick={handleAvatarClick} style={{ cursor: 'pointer' }}>
         {session?.user?.image ? (
           <AvatarImage src={session.user.image} alt='profile_pic' />
@@ -112,7 +112,7 @@ export function HomeHeader({ className }: SidebarProps) {
           <Profile />
         </div>
       )}
-    </div> */}
+    </div>
     </>
   );
 
@@ -120,13 +120,16 @@ export function HomeHeader({ className }: SidebarProps) {
     return (
       <>
         {items.map((item) => {
-          const selected =
-            pathname === item.href || pathname.includes(item.href);
+          // Check for exact match on the Home route and partial match for other routes
+          const isHomePage = item.href === '/' && pathname === '/';
+          const isOtherPage = item.href !== '/' && pathname.includes(item.href);
+          const selected = isHomePage || isOtherPage;
+
           return (
             <Link href={item.href} key={item.title} passHref>
               <Typography
                 variant="p"
-                className={cn(selected && "text-primary cursor-pointer")}
+                className={cn(selected ? " font-bold cursor-pointer" : " cursor-pointer")}
               >
                 {item.title}
               </Typography>
@@ -136,6 +139,7 @@ export function HomeHeader({ className }: SidebarProps) {
       </>
     );
   };
+
 
   return (
     <div

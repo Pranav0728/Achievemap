@@ -5,7 +5,7 @@ export const Roadmap = [
         description: 'Create smart systems that learn from data and make decisions to solve real-world problems.',
         href:"/roadmaps/aiengineer",
         duration: 'Varies',
-        price: 29900,
+        price: 200,
         completed: false,
         buy: false,
         src: "/images/Ai-Engineer.png"
