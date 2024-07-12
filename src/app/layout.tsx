@@ -21,8 +21,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <Suspense fallback={<p>Loading feed...</p>}>
         <body className={`${inter.className} flex flex-col`}>
+      <Suspense fallback={<p>Loading feed...</p>}>
           <AuthProvider>
             <Container>
               <ThemeProvider
@@ -35,8 +35,8 @@ export default function RootLayout({
               </ThemeProvider>
             </Container>
           </AuthProvider>
-        </body>
       </Suspense>
+        </body>
     </html>
   );
 }
