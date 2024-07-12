@@ -56,7 +56,7 @@ export function HomeHeader({ className }: SidebarProps) {
     <Link href="/" className="pointer flex items-center">
       <Image
         alt="logo"
-        src={logo}
+        src='/images/logom.png'
         className="mr-3"
         width={50}
         height={50}
