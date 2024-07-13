@@ -23,12 +23,12 @@ export default function Page() {
   const uid = searchParams.get("uid") as string; // Type assertion for uid
   const [purchasedRoadmapIds, setPurchasedRoadmapIds] = useState<string[]>([]);
 
-  
-  if(uid){
-    useEffect(() => {
-      // Fetch user's purchased roadmap IDs here
+  useEffect(() => {
+    if (uid) {
       fetchPurchasedRoadmaps();
-    }, []);
+    }
+  }, [uid]);
+
   
   const fetchPurchasedRoadmaps = async () => {
     try {
@@ -44,7 +44,6 @@ export default function Page() {
       // Handle error condition, possibly show an error message
     }
   };
-}
 
   const CheckOutClick = async (id: string, href: string) => {
     try {
