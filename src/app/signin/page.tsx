@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 
 export default async function AuthenticationPageSignin() {
   const Session = await getServerSession(authOptions);
-  if(Session) redirect("/")
+  if(Session) redirect(`/`)
   return (
     <>
       <div className="container relative h-[800px] flex-col items-center justify-center md:grid lg:max-w-none lg:grid-cols-2 lg:px-0">

@@ -23,6 +23,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useState } from "react";
 import { title } from "process";
 
+
 interface SidebarProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 export function HomeHeader({ className }: SidebarProps) {
@@ -42,7 +43,7 @@ export function HomeHeader({ className }: SidebarProps) {
       title: "Home",
     },
     {
-      href: "/services",
+      href: `/services/?uid=${session?.user.id}`,
       title: "Services",
     },
     {

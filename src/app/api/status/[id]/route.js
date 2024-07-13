@@ -1,50 +1,71 @@
 import { NextResponse } from "next/server";
 import sha256 from "crypto-js/sha256";
 import axios from "axios";
+import User from "@/lib/models/users";
 
 export async function POST(req) {
-  const data = await req.formData();
-  console.log(data);
-
-  const status = data.get("code");
-  const merchantId = process.env.NEXT_PUBLIC_MERCHANT_ID;
-  const transactionId = data.get("transactionId");
-
-  const st = `/pg/v1/status/${merchantId}/${transactionId}${process.env.NEXT_PUBLIC_SALT_KEY}`;
-  const dataSha256 = sha256(st).toString(); // Convert to string
-
-  const checksum = `${dataSha256}###${process.env.NEXT_PUBLIC_SALT_INDEX}`;
-  console.log(checksum);
-
-  const options = {
-    method: "GET",
-    url: `https://api.phonepe.com/apis/hermes/pg/v1/status/${merchantId}/${transactionId}`,
-    headers: {
-      accept: "application/json",
-      "Content-Type": "application/json",
-      "X-VERIFY": checksum,
-      "X-MERCHANT-ID": merchantId,
-    },
-  };
-
   try {
-    // CHECK PAYMENT STATUS
-    const response = await axios.request(options);
-    console.log("r===", response.data.code);
+    const url = new URL(req.url, process.env.NEXTAUTH_URL);
+    const uid = url.searchParams.get("uid");
+    const id = url.searchParams.get("id");
 
-    if (response.data.code === "PAYMENT_SUCCESS") {
-      return NextResponse.redirect(`${process.env.NEXTAUTH_URL}/success`, {
-        status: 301,
-      });
-    } else {
-      return NextResponse.redirect(`${process.env.NEXTAUTH_URL}/failure`, {
-        status: 301,
-      });
+    if (!uid || !id) {
+      throw new Error("UID or ID is missing.");
     }
+
+    const data = await req.formData();
+    console.log("Form Data:", data);
+
+    const merchantId = process.env.NEXT_PUBLIC_MERCHANT_ID;
+    const transactionId = data.get("transactionId");
+
+    // Generate checksum
+    const st = `/pg/v1/status/${merchantId}/${transactionId}${process.env.NEXT_PUBLIC_SALT_KEY}`;
+    const dataSha256 = sha256(st).toString();
+    const checksum = `${dataSha256}###${process.env.NEXT_PUBLIC_SALT_INDEX}`;
+    console.log("Checksum:", checksum);
+
+    // Prepare API request to check payment status
+    const options = {
+      method: "GET",
+      url: `${process.env.NEXT_PUBLIC_UAT_ID}/pg/v1/status/${merchantId}/${transactionId}`,
+      headers: {
+        accept: "application/json",
+        "Content-Type": "application/json",
+        "X-VERIFY": checksum,
+        "X-MERCHANT-ID": merchantId,
+      },
+    };
+
+    // Check payment status
+    const response = await axios.request(options);
+    console.log("Payment status:", response.data.code);
+
+    // Ensure response.data exists before accessing properties
+    if (!response || !response.data) {
+      throw new Error("Failed to fetch payment status.");
+    }
+
+    // Determine transaction status based on API response
+    const transactionStatus = response.data.code === "PAYMENT_SUCCESS" ? "SUCCESS" : "FAILURE";
+
+    // Update user's purchase status in database
+    const updatedUser = await User.findOneAndUpdate(
+      { _id: uid, 'purchases.roadmapId': id },
+      { $set: { 'purchases.$.status': transactionStatus, 'purchases.$.updatedAt': new Date() } },
+      { new: true }
+    );
+
+    if (!updatedUser) {
+      console.error(`User ${uid} or purchase ${id} not found.`);
+      return NextResponse.redirect(`${process.env.NEXTAUTH_URL}/failure`, { status: 301 });
+    }
+
+    // Redirect based on transaction status
+    const redirectUrl = transactionStatus === "SUCCESS" ? `${process.env.NEXTAUTH_URL}/success` : `${process.env.NEXTAUTH_URL}/failure`;
+    return NextResponse.redirect(redirectUrl, { status: 301 });
   } catch (error) {
-    console.error("Error in API request:", error.response.data);
-    return NextResponse.redirect(`${process.env.NEXTAUTH_URL}/failure`, {
-      status: 301,
-    });
+    console.error("Error in API request:", error.message);
+    return NextResponse.redirect(`${process.env.NEXTAUTH_URL}/failure`, { status: 301 });
   }
 }

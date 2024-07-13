@@ -28,7 +28,7 @@ export const authOptions: NextAuthOptions = {
       if ((account?.provider === 'google' || account?.provider === 'github') && profile) {
         try {
           await dbConnect();
-          const existingUser = await User.findOne({ email: user.email });
+          let existingUser = await User.findOne({ email: user.email });
           if (!existingUser) {
             const newUser = new User({
               email: user.email,
@@ -36,14 +36,22 @@ export const authOptions: NextAuthOptions = {
               image: user.image,
             });
             await newUser.save();
-          } 
+            existingUser = newUser;
+          }
+          token.id = existingUser._id;
         } catch (error) {
           console.log(error);
         }
       }
       return token;
     },
+    async session({ session, token }) {
+      if (session.user && token.id) {
+        session.user.id = token.id as string;
+      }
+      return session;
+    },
   },
 };
 
-
+export default (req: NextApiRequest, res: NextApiResponse) => NextAuth(req, res, authOptions);

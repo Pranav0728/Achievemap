@@ -1,18 +1,19 @@
 "use server";
 import { v4 as uuidv4 } from "uuid";
 import sha256 from "crypto-js/sha256";
+import User from "@/lib/models/users";
 
-export async function payment(amount) {
-  const transactionid = "Tr-" + uuidv4().toString(36).slice(-6);
+export async function payment(amount, uid, id) {
+  const transactionId = "Tr-" + uuidv4().toString(36).slice(-6);
 
   const payload = {
     merchantId: process.env.NEXT_PUBLIC_MERCHANT_ID,
-    merchantTransactionId: transactionid,
+    merchantTransactionId: transactionId,
     merchantUserId: "MUID-" + uuidv4().toString(36).slice(-6),
     amount: amount,
-    redirectUrl: `${process.env.NEXTAUTH_URL}/api/status/${transactionid}`,
+    redirectUrl: `${process.env.NEXTAUTH_URL}/api/status/${transactionId}?uid=${uid}&id=${id}`,
     redirectMode: "POST",
-    callbackUrl: `${process.env.NEXTAUTH_URL}/api/status/${transactionid}`,
+    callbackUrl: `${process.env.NEXTAUTH_URL}/api/status/${transactionId}?uid=${uid}&id=${uid}`,
     mobileNumber: "9999999999",
     paymentInstrument: {
       type: "PAY_PAGE",
@@ -30,7 +31,7 @@ export async function payment(amount) {
   const checksum = dataSha256 + "###" + process.env.NEXT_PUBLIC_SALT_INDEX;
   console.log("Checksum:", checksum);
 
-  const UAT_PAY_API_URL = "https://api.phonepe.com/apis/hermes/pg/v1/pay";
+  const UAT_PAY_API_URL = `${process.env.NEXT_PUBLIC_UAT_ID}/pg/v1/pay`;
 
   try {
     const response = await fetch(UAT_PAY_API_URL, {
@@ -50,6 +51,24 @@ export async function payment(amount) {
 
     const responseData = await response.json();
     const redirect = responseData.data.instrumentResponse.redirectInfo.url;
+
+    // Store initial transaction details in the database
+    const user = await User.findOne({ _id: uid });
+
+    if (user) {
+      // If user record exists, update it with new purchase
+      user.purchases.push({
+        roadmapId: id,
+        amount: amount,
+        status: "PENDING",
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      });
+      await user.save();
+    } else {
+      console.log("Couldn't find")
+    }
+
     return { url: redirect };
   } catch (error) {
     console.error("Error:", error.message);

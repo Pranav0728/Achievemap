@@ -16,18 +16,18 @@ import { payment } from "../actions/serveractions";
 export default function CheckoutPage() {
   const searchParams = useSearchParams();
   const id = searchParams.get("id");
+  const uid = searchParams.get("uid");
   const data = Roadmap.find((item) => item.id === id);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
   const router = useRouter();
   const amount = data?.price
-  
 
   const handlePurchase = async (e: any) => {
     e.preventDefault();
     try {
-        const redirect = await payment(amount);
+        const redirect = await payment(amount,uid, id );
         console.log("redirect>>>", redirect.url);
         router.push(redirect.url);
       console.log("Purchase successful");
@@ -59,7 +59,7 @@ export default function CheckoutPage() {
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                       placeholder="Enter your name"
-                      required
+                    
                     />
                   </div>
                   <div className="col-span-2">
@@ -70,7 +70,7 @@ export default function CheckoutPage() {
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="Enter your email"
-                      required
+             
                     />
                   </div>
                   <div className="col-span-2 flex justify-end">
