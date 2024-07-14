@@ -32,9 +32,9 @@ export async function payment(amount, uid, id) {
   console.log("Checksum:", checksum);
 
   const UAT_PAY_API_URL = `${process.env.NEXT_PUBLIC_UAT_ID}/pg/v1/pay`;
-
+  console.log(UAT_PAY_API_URL)
   try {
-    const response = await fetch(UAT_PAY_API_URL, {
+    const response = await fetch('https://api.phonepe.com/apis/hermes/pg/v1/pay', {
       method: "POST",
       headers: {
         accept: "application/json",
