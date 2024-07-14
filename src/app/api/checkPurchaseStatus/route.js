@@ -4,7 +4,7 @@ import User from "../../../lib/models/users";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(req) {
-  const { searchParams } = new URL(req.url,'https://achievemap.vercel.app');
+  const { searchParams } = new URL(req.url);
   const uid = searchParams.get("uid");
   const id = searchParams.get("id");
 

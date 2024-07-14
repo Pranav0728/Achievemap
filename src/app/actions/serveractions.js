@@ -11,9 +11,9 @@ export async function payment(amount, uid, id) {
     merchantTransactionId: transactionId,
     merchantUserId: "MUID-" + uuidv4().toString(36).slice(-6),
     amount: amount,
-    redirectUrl: `https://achievemap.vercel.app/api/status/${transactionId}?uid=${uid}&id=${id}`,
+    redirectUrl: `${process.env.NEXTAUTH_URL}/api/status/${transactionId}?uid=${uid}&id=${id}`,
     redirectMode: "POST",
-    callbackUrl: `https://achievemap.vercel.app/api/status/${transactionId}?uid=${uid}&id=${uid}`,
+    callbackUrl: `${process.env.NEXTAUTH_URL}/api/status/${transactionId}?uid=${uid}&id=${uid}`,
     mobileNumber: "9999999999",
     paymentInstrument: {
       type: "PAY_PAGE",
@@ -31,7 +31,7 @@ export async function payment(amount, uid, id) {
   const checksum = `${dataSha256}###${process.env.NEXT_PUBLIC_SALT_INDEX}`;
   console.log("Checksum:", checksum);
 
-  const UAT_PAY_API_URL = `https://api.phonepe.com/apis/hermes/pg/v1/pay`;
+  const UAT_PAY_API_URL = `${process.env.NEXT_PUBLIC_UAT_ID}/pg/v1/pay`;
   console.log(UAT_PAY_API_URL);
 
   try {

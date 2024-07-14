@@ -3,15 +3,13 @@ import sha256 from "crypto-js/sha256";
 import axios from "axios";
 import User from "@/lib/models/users";
 
-export async function POST(req: Request) {
+export async function POST(req:Request) {
   try {
-    // Log the request object to inspect its properties
-    console.log("Request object:", req);
+    const url = new URL(req.url);
+    const uid = url.searchParams.get("uid");
+    const id = url.searchParams.get("id");
 
-    // Extract uid and id from the request headers or body
-    const { uid, id } = await req.json(); // Assuming JSON body, adjust if different
-
-    if (!uid || !id) {
+    if (!uid || !id ) {
       throw new Error("Invalid parameters or roadmap not found.");
     }
 
@@ -30,7 +28,7 @@ export async function POST(req: Request) {
     // Prepare API request to check payment status
     const options = {
       method: "GET",
-      url: `https://api.phonepe.com/apis/hermes/pg/v1/status/${merchantId}/${transactionId}`,
+      url: `${process.env.NEXT_PUBLIC_UAT_ID}/pg/v1/status/${merchantId}/${transactionId}`,
       headers: {
         accept: "application/json",
         "Content-Type": "application/json",
@@ -51,7 +49,7 @@ export async function POST(req: Request) {
     // Determine transaction status based on API response
     const transactionStatus = response.data.code === "PAYMENT_SUCCESS" ? "SUCCESS" : "FAILURE";
 
-    // Update user's purchase status in the database
+    // Update user's purchase status in database
     const updatedUser = await User.findOneAndUpdate(
       { _id: uid, 'purchases.roadmapId': id },
       { $set: { 'purchases.$.status': transactionStatus, 'purchases.$.updatedAt': new Date() } },
@@ -66,7 +64,7 @@ export async function POST(req: Request) {
     // Redirect based on transaction status
     const redirectUrl = transactionStatus === "SUCCESS" ? `${process.env.NEXTAUTH_URL}/services` : `${process.env.NEXTAUTH_URL}/failure`;
     return NextResponse.redirect(redirectUrl, { status: 301 });
-  } catch (error: any) {
+  } catch (error:any) {
     console.error("Error in API request:", error.message);
     return NextResponse.redirect(`${process.env.NEXTAUTH_URL}/failure`, { status: 301 });
   }
