@@ -6,7 +6,7 @@ import { Roadmap } from "@/components/roadmapData";
 
 export async function POST(req) {
   try {
-    const url = new URL(req.url, process.env.NEXTAUTH_URL);
+    const url = new URL(req.url);
     const uid = url.searchParams.get("uid");
     const id = url.searchParams.get("id");
     const Rdata = Roadmap.find((item) => item.id === id);
