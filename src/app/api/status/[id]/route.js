@@ -30,7 +30,7 @@ export async function POST(req) {
     // Prepare API request to check payment status
     const options = {
       method: "GET",
-      url: `${process.env.NEXT_PUBLIC_UAT_ID}/pg/v1/status/${merchantId}/${transactionId}`,
+      url: `https://api.phonepe.com/apis/hermes/pg/v1/status/${merchantId}/${transactionId}`,
       headers: {
         accept: "application/json",
         "Content-Type": "application/json",
