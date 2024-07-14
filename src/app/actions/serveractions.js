@@ -42,7 +42,6 @@ export async function payment(amount, uid, id) {
         "X-VERIFY": checksum,
       },
       body: JSON.stringify({ request: dataBase64 }),
-      timeout: 40000, 
     });
 
     if (!response.ok) {
