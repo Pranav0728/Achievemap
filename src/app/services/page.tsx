@@ -48,6 +48,11 @@ export default function Page() {
     try {
       const response = await fetch(`/api/checkPurchaseStatus?uid=${uid}&id=${id}`);
       const data = await response.json();
+      if(data.message === "Roadmap not purchased")
+      {
+        router.push(`/checkout?uid=${uid}&id=${id}`);
+        return;
+      }
       if (data.status === "success") {
         router.push(href); // Redirect to data.href if purchase status is success
       } else {
