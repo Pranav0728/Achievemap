@@ -31,7 +31,7 @@ export async function payment(amount, uid, id) {
   const checksum = dataSha256 + "###" + process.env.NEXT_PUBLIC_SALT_INDEX;
   console.log("Checksum:", checksum);
 
-  const UAT_PAY_API_URL = `https://api.phonepe.com/apis/hermes/pg/v1/pay`;
+  const UAT_PAY_API_URL = `${process.env.NEXT_PUBLIC_UAT_ID}/pg/v1/pay`;
 
   try {
     const response = await fetch(UAT_PAY_API_URL, {
