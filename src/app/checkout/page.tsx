@@ -31,8 +31,8 @@ export default function CheckoutPage() {
         console.log("redirect>>>", redirect.url);
         router.push(redirect.url);
       console.log("Purchase successful");
-    } catch (err) {
-      setError("An error occurred during the purchase. Please try again.");
+    } catch (err:any) {
+      setError(err.message);
     }
   };
 
