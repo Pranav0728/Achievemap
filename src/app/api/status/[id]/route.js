@@ -11,8 +11,8 @@ export async function POST(req) {
     const id = url.searchParams.get("id");
     const Rdata = Roadmap.find((item) => item.id === id);
 
-    if (!uid || !id) {
-      throw new Error("UID or ID is missing.");
+    if (!uid || !id || !Rdata) {
+      throw new Error("Invalid parameters or roadmap not found.");
     }
 
     const data = await req.formData();
