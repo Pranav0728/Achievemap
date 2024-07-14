@@ -1,5 +1,5 @@
-"use client"
-import { Footer } from "@/components/common/footer";
+// Example frontend component in Next.js (/pages/index.tsx or another relevant page)
+'use client'
 import Container from "../../components/container";
 import React, { useEffect, useState } from "react";
 import { HomeHeader } from "@/components/common/HomeHeader";
@@ -17,7 +17,7 @@ import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 
-export default function Page() {  
+export default function Page() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const uid = searchParams.get("uid") as string; // Type assertion for uid
@@ -29,7 +29,6 @@ export default function Page() {
     }
   }, [uid]);
 
-  
   const fetchPurchasedRoadmaps = async () => {
     try {
       const response = await fetch(`/api/getPurchasedRoadmaps?uid=${uid}`);
@@ -37,7 +36,7 @@ export default function Page() {
         throw new Error("Failed to fetch purchased roadmaps");
       }
       const data = await response.json();
-      const purchasedIds = data.roadmaps.map((roadmap:any) => roadmap.roadmapId);
+      const purchasedIds = data.roadmaps.map((roadmap: any) => roadmap.roadmapId);
       setPurchasedRoadmapIds(purchasedIds);
     } catch (error) {
       console.error("Error fetching purchased roadmaps:", error);
@@ -48,15 +47,14 @@ export default function Page() {
   const CheckOutClick = async (id: string, href: string) => {
     try {
       const response = await fetch(`/api/checkPurchaseStatus?uid=${uid}&id=${id}`);
-      if (!response.ok) {
-        throw new Error("Failed to fetch purchase status");
-      }
       const data = await response.json();
-
       if (data.status === "success") {
         router.push(href); // Redirect to data.href if purchase status is success
       } else {
         router.push(`/checkout?uid=${uid}&id=${id}`); // Redirect to checkout if purchase status is not success
+      }
+      if (!response.ok) {
+        throw new Error(`Failed to fetch purchase status, status: ${response.status}`);
       }
     } catch (error) {
       console.error("Error checking purchase status:", error);
@@ -97,7 +95,6 @@ export default function Page() {
                   <Typography variant="p">{isPurchased(data.id) ? "Purchased" : `Price: ${data.price / 100} rs/-`}</Typography>
                   <Button
                     onClick={() => CheckOutClick(data.id, data.href)}
-                     // Disable button if roadmap is already purchased
                   >
                     <Typography variant="p">
                       {isPurchased(data.id) ? "Open" : "Buy Roadmap"}
@@ -109,7 +106,6 @@ export default function Page() {
           ))}
         </div>
       </div>
-      <Footer />
     </Container>
   );
 }

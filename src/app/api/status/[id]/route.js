@@ -2,12 +2,14 @@ import { NextResponse } from "next/server";
 import sha256 from "crypto-js/sha256";
 import axios from "axios";
 import User from "@/lib/models/users";
+import { Roadmap } from "@/components/roadmapData";
 
 export async function POST(req) {
   try {
     const url = new URL(req.url, process.env.NEXTAUTH_URL);
     const uid = url.searchParams.get("uid");
     const id = url.searchParams.get("id");
+    const Rdata = Roadmap.find((item) => item.id === id);
 
     if (!uid || !id) {
       throw new Error("UID or ID is missing.");
@@ -62,7 +64,7 @@ export async function POST(req) {
     }
 
     // Redirect based on transaction status
-    const redirectUrl = transactionStatus === "SUCCESS" ? `${process.env.NEXTAUTH_URL}/success` : `${process.env.NEXTAUTH_URL}/failure`;
+    const redirectUrl = transactionStatus === "SUCCESS" ? `${process.env.NEXTAUTH_URL}/${Rdata.href}` : `${process.env.NEXTAUTH_URL}/failure`;
     return NextResponse.redirect(redirectUrl, { status: 301 });
   } catch (error) {
     console.error("Error in API request:", error.message);
