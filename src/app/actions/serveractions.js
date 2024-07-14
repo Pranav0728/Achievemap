@@ -34,7 +34,7 @@ export async function payment(amount, uid, id) {
   const UAT_PAY_API_URL = `${process.env.NEXT_PUBLIC_UAT_ID}/pg/v1/pay`;
   console.log(UAT_PAY_API_URL)
   try {
-    const response = await fetch('https://api.phonepe.com/apis/hermes/pg/v1/pay', {
+    const response = await fetch(UAT_PAY_API_URL, {
       method: "POST",
       headers: {
         accept: "application/json",
@@ -42,6 +42,7 @@ export async function payment(amount, uid, id) {
         "X-VERIFY": checksum,
       },
       body: JSON.stringify({ request: dataBase64 }),
+      timeout: 40000, 
     });
 
     if (!response.ok) {
