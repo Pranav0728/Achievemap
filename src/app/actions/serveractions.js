@@ -50,15 +50,15 @@ export async function payment(amount, uid, id) {
       throw new Error(errorData.message || "Something went wrong");
     }
 
-    const responseData = await response.json();
-    console.log("Response Data:", responseData);
+    // const responseData = await response.json();
+    // console.log("Response Data:", responseData);
 
-    // Check if responseData contains the expected structure
-    if (!responseData.data || !responseData.data.instrumentResponse || !responseData.data.instrumentResponse.redirectInfo) {
-      throw new Error("Invalid response structure from payment API");
-    }
+    // // Check if responseData contains the expected structure
+    // if (!responseData.data || !responseData.data.instrumentResponse || !responseData.data.instrumentResponse.redirectInfo) {
+    //   throw new Error("Invalid response structure from payment API");
+    // }
 
-    const redirect = responseData.data.instrumentResponse.redirectInfo.url;
+    const redirect = response.data.data.instrumentResponse.redirectInfo.url;
 
     // Store initial transaction details in the database
     const user = await User.findOne({ _id: uid });
