@@ -32,9 +32,9 @@ export default function Page() {
   const fetchPurchasedRoadmaps = async () => {
     try {
       const response = await fetch(`/api/getPurchasedRoadmaps?uid=${uid}`);
-      if (!response.ok) {
-        throw new Error("Failed to fetch purchased roadmaps");
-      }
+      // if (!response.ok) {
+      //   throw new Error("Failed to fetch purchased roadmaps");
+      // }
       const data = await response.json();
       const purchasedIds = data.roadmaps.map((roadmap: any) => roadmap.roadmapId);
       setPurchasedRoadmapIds(purchasedIds);
@@ -53,9 +53,9 @@ export default function Page() {
       } else {
         router.push(`/checkout?uid=${uid}&id=${id}`); // Redirect to checkout if purchase status is not success
       }
-      if (!response.ok) {
-        throw new Error(`Failed to fetch purchase status, status: ${response.status}`);
-      }
+      // if (!response.ok) {
+      //   throw new Error(`Failed to fetch purchase status, status: ${response.status}`);
+      // }
     } catch (error) {
       console.error("Error checking purchase status:", error);
       // Handle error condition, possibly redirect to a failure page or show an error message
