@@ -1,33 +1,30 @@
-import { NextRequest, NextResponse } from 'next/server';
-import dbConnect from '../../../../lib/dbConnect';
-import User from '../../../../lib/models/users';
 
-export async function GET(req) {
-  const { searchParams } = new URL(req.url);
-  const uid = searchParams.get('uid');
-  const id = searchParams.get('id');
+import dbConnect from "../../../lib/dbConnect";
+import User from "../../../lib/models/users";
+import { NextResponse } from "next/server";
 
-  if (!uid || !id) {
-    return NextResponse.json({ message: "Missing uid or id" }, { status: 400 });
-  }
+export const GET = async (req) => {
+  const url = new URL(req.url);
+  const uid = url.searchParams.get("uid");
+  const id = url.searchParams.get("id");
 
   try {
     await dbConnect(); // Connect to MongoDB
     const user = await User.findOne({ _id: uid, 'purchases.roadmapId': id });
 
     if (!user) {
-      return NextResponse.json({ status: "failure" }, { status: 404 });
+      return new NextResponse(JSON.stringify({ status: "failure" }), { status: 404 });
     }
 
     const purchase = user.purchases.find((purchase) => purchase.roadmapId === id);
 
-    if (purchase && purchase.status === "SUCCESS") {
-      return NextResponse.json({ status: "success" }, { status: 200 });
+    if (purchase.status === "SUCCESS") {
+      return new NextResponse(JSON.stringify({ status: "success" }), { status: 200 });
     } else {
-      return NextResponse.json({ status: "failure" }, { status: 200 });
+      return new NextResponse(JSON.stringify({ status: "failure" }), { status: 200 });
     }
   } catch (error) {
     console.error("Error checking purchase status:", error);
-    return NextResponse.json({ message: { error: error.message } }, { status: 500 });
+    return new NextResponse(JSON.stringify({ message: { error: error.message } }), { status: 500 });
   }
-}
+};
