@@ -5,9 +5,9 @@ import User from "@/lib/models/users";
 
 export async function POST(req:Request) {
   try {
-    const url = new URL(req.url);
-    const uid = url.searchParams.get("uid");
-    const id = url.searchParams.get("id");
+    const purl = new URL(req.url);
+    const uid = purl.searchParams.get("uid");
+    const id = purl.searchParams.get("id");
 
     if (!uid || !id ) {
       throw new Error("Invalid parameters or roadmap not found.");

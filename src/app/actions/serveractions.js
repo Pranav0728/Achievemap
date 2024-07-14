@@ -11,9 +11,9 @@ export async function payment(amount, uid, id) {
     merchantTransactionId: transactionId,
     merchantUserId: "MUID-" + uuidv4().toString(36).slice(-6),
     amount: amount,
-    redirectUrl: `${process.env.NEXTAUTH_URL}/api/status/${transactionId}`,
+    redirectUrl: `${process.env.NEXTAUTH_URL}/api/status/${transactionId}?uid=${uid}&id=${id}`,
     redirectMode: "POST",
-    callbackUrl: `${process.env.NEXTAUTH_URL}/api/status/${transactionId}`,
+    callbackUrl: `${process.env.NEXTAUTH_URL}/api/status/${transactionId}?uid=${uid}&id=${uid}`,
     mobileNumber: "9999999999",
     paymentInstrument: {
       type: "PAY_PAGE",
