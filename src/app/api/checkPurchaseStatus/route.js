@@ -1,10 +1,10 @@
-// Example backend endpoint in Next.js API route (/pages/api/checkPurchaseStatus.js)
+
 import dbConnect from "../../../lib/dbConnect";
 import User from "../../../lib/models/users";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(req) {
-  const { searchParams } = new URL(req.url);
+  const { searchParams } = new URL(req.url,'https://achievemap.vercel.app');
   const uid = searchParams.get("uid");
   const id = searchParams.get("id");
 
