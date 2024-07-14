@@ -5,7 +5,7 @@ import User from "../../../lib/models/users";
 import { NextResponse } from "next/server";
 
 export const GET = async (req) => {
-  const url = new URL(req.url, process.env.NEXTAUTH_URL);
+  const url = new URL(req.url);
   const uid = url.searchParams.get("uid");
   const id = url.searchParams.get("id");
 
