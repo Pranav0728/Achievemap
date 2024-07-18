@@ -53,19 +53,19 @@ export async function payment(amount, uid, id) {
     const redirect = responseData.data.instrumentResponse.redirectInfo.url;
 
     // // Store initial transaction details in the database
-    const user = await User.findOne({ _id: uid });
-    if (user) {
-      user.purchases.push({
-        roadmapId: id,
-        amount: amount,
-        status: "PENDING",
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      });
-      await user.save();
-    } else {
-      console.log("Couldn't find")
-    }
+    // const user = await User.findOne({ _id: uid });
+    // if (user) {
+    //   user.purchases.push({
+    //     roadmapId: id,
+    //     amount: amount,
+    //     status: "PENDING",
+    //     createdAt: new Date(),
+    //     updatedAt: new Date(),
+    //   });
+    //   await user.save();
+    // } else {
+    //   console.log("Couldn't find")
+    // }
     return redirect
   } catch (error) {
     console.error("Error:", error.message);
