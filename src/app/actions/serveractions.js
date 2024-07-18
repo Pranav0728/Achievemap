@@ -35,14 +35,14 @@ export async function payment(amount, uid, id) {
   console.log("UAT_PAY_API_URL:", UAT_PAY_API_URL);
 
   try {
-    const response = await fetch(UAT_PAY_API_URL, {
+    const response = await fetch(`${UAT_PAY_API_URL}?uid=${uid}&id=${id}`, {
       method: "POST",
       headers: {
         accept: "application/json",
         "Content-Type": "application/json",
         "X-VERIFY": checksum,
       },
-      body: JSON.stringify({ request: dataBase64, uid, id }), // Include uid and id in the POST body
+      body: JSON.stringify({ request: dataBase64}),
     });
 
     if (!response.ok) {
