@@ -61,19 +61,19 @@ export async function POST(req: Request) {
     const transactionStatus = response.data.code === "PAYMENT_SUCCESS" ? "SUCCESS" : "FAILURE";
 
     // Update user's purchase status in the database
-    const user = await User.findById(uid);
-    if (user) {
-      user.purchases.push({
-        roadmapId: id,
-        amount: 20,
-        status: transactionStatus,
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      });
-      await user.save();
-    } else {
-      throw new Error("User not found.");
-    }
+    // const user = await User.findById(uid);
+    // if (user) {
+    //   user.purchases.push({
+    //     roadmapId: id,
+    //     amount: 20,
+    //     status: transactionStatus,
+    //     createdAt: new Date(),
+    //     updatedAt: new Date(),
+    //   });
+    //   await user.save();
+    // } else {
+    //   throw new Error("User not found.");
+    // }
 
     // Redirect based on transaction status
     const redirectUrl = transactionStatus === "SUCCESS" ? `${nextAuthUrl}/services` : `${nextAuthUrl}/failure`;
