@@ -26,7 +26,7 @@ export default function CheckoutPage() {
     e.preventDefault();
     try {
       const redirect = await payment(amount, uid, id);
-      // console.log("redirect>>>", redirect);
+      console.log("redirect>>>", redirect);
       // router.push(redirect.url);
       console.log("Purchase successful");
     } catch (err: any) {
