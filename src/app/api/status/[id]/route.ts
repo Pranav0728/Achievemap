@@ -7,20 +7,15 @@ import dbConnect from "@/lib/dbConnect";
 export async function POST(req:Request) {
   try {
     const purl = new URL(req.url);
-    // const uid = purl.searchParams.get("uid");
-    // const id = purl.searchParams.get("id");
-
+    console.log(purl)
+    const uid = purl.searchParams.get("uid");
+    const id = purl.searchParams.get("id");
     if (!purl) {
       throw new Error("Invalid parameters or roadmap not found.");
     }
 
     const data = await req.formData();
     console.log("Form Data:", data);
-    const uid = data.get("uid")
-    const id = data.get("id")
-    if(!uid||!id){
-      throw new Error("Invalid parameters or roadmap not found from form.");
-    }
     const merchantId = process.env.NEXT_PUBLIC_MERCHANT_ID;
     const transactionId = data.get("transactionId");
 
