@@ -21,7 +21,7 @@ export default function Page() {
   const searchParams = useSearchParams();
   const uid = searchParams.get("uid") as string; // Type assertion for uid
   const [purchasedRoadmapIds, setPurchasedRoadmapIds] = useState<string[]>([]);
-  const [loading, setLoading] = useState(true); // State for loading indicator
+  const [loading, setLoading] = useState(false); // State for loading indicator
 
   useEffect(() => {
     if (uid) {
@@ -31,6 +31,7 @@ export default function Page() {
 
   const fetchPurchasedRoadmaps = async () => {
     try {
+      setLoading(true)
       const response = await fetch(`/api/getPurchasedRoadmaps?uid=${uid}`);
       const data = await response.json();
       const purchasedIds = data.roadmaps.map((roadmap: any) => roadmap.roadmapId);
