@@ -42,6 +42,7 @@ export async function POST(req:Request) {
     // Check payment status
     const response = await axios.request(options);
     console.log("Payment status:", response.data.code);
+    console.log("response"+ response)
 
     // Ensure response.data exists before accessing properties
     if (!response || !response.data) {
