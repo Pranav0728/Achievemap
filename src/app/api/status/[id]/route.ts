@@ -3,14 +3,14 @@ import sha256 from "crypto-js/sha256";
 import axios from "axios";
 import User from "@/lib/models/users";
 import dbConnect from "@/lib/dbConnect";
-import { useSession } from "next-auth/react";
 
 export async function POST(req:Request) {
   try {
-    const {data: session} = useSession();
     const purl = new URL(req.url);
     console.log("purl "+purl)
-    const uid = session?.user.id
+    const durl = purl.href;
+    console.log("durl "+durl)
+    const uid = purl.searchParams.get("uid");
     console.log("uid "+uid)
     const id = purl.searchParams.get("id");
     console.log("id "+id)
