@@ -11,6 +11,7 @@ import { Separator } from "@/components/ui/separator";
 import Container from "@/components/container";
 import { payment } from "../actions/serveractions";
 
+
 export default function CheckoutPage() {
   const searchParams = useSearchParams();
   const id = searchParams.get("id");

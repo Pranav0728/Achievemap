@@ -5,7 +5,6 @@ import User from "@/lib/models/users";
 
 export async function payment(amount, uid, id) {
   const transactionId = "Tr-" + uuidv4().toString(36).slice(-6);
-
   const payload = {
     merchantId: process.env.NEXT_PUBLIC_MERCHANT_ID,
     merchantTransactionId: transactionId,
@@ -42,9 +41,7 @@ export async function payment(amount, uid, id) {
         "Content-Type": "application/json",
         "X-VERIFY": checksum,
       },
-      body: JSON.stringify({ request: dataBase64,
-        uid: uid,
-        id: id}),
+      body: JSON.stringify({ request: dataBase64}),
     });
 
     if (!response.ok) {
