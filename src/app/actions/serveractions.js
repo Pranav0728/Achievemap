@@ -5,15 +5,14 @@ import User from "@/lib/models/users";
 
 export async function payment(amount, uid, id) {
   const transactionId = "Tr-" + uuidv4().toString(36).slice(-6);
-  console.log("server id "+ id)
   const payload = {
     merchantId: process.env.NEXT_PUBLIC_MERCHANT_ID,
     merchantTransactionId: transactionId,
     merchantUserId: "MUID-" + uuidv4().toString(36).slice(-6),
     amount: amount,
-    redirectUrl: `${process.env.NEXTAUTH_URL}/api/status/${transactionId}?id=${id}&uid=${uid}`,
+    redirectUrl: `${process.env.NEXTAUTH_URL}/api/status/${transactionId}?roadmapid=${id}&uid=${uid}`,
     redirectMode: "POST",
-    callbackUrl: `${process.env.NEXTAUTH_URL}/api/status/${transactionId}?id=${id}uid=${uid}`,
+    callbackUrl: `${process.env.NEXTAUTH_URL}/api/status/${transactionId}?roadmapid=${id}uid=${uid}`,
     mobileNumber: "9999999999",
     paymentInstrument: {
       type: "PAY_PAGE",

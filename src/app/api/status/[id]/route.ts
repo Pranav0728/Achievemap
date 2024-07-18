@@ -12,8 +12,8 @@ export async function POST(req:Request) {
     console.log("durl "+durl)
     const uid = purl.searchParams.get("uid");
     console.log("uid "+uid)
-    const id = purl.searchParams.get("id");
-    console.log("id "+id)
+    const roadmapid = purl.searchParams.get("roadmapid");
+    console.log("roadmapid "+roadmapid)
 
     const data = await req.formData();
     console.log("Form Data:", data);
@@ -57,7 +57,7 @@ export async function POST(req:Request) {
     const user = await User.findOne({ _id: uid });
     if (user) {
       user.purchases.push({
-        roadmapId: id,
+        roadmapId: roadmapid,
         amount:20,
         status: transactionStatus,
         createdAt: new Date(),
