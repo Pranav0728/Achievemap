@@ -42,7 +42,9 @@ export async function payment(amount, uid, id) {
         "Content-Type": "application/json",
         "X-VERIFY": checksum,
       },
-      body: JSON.stringify({ request: dataBase64},uid,id),
+      body: JSON.stringify({ request: dataBase64,
+        uid: uid,
+        id: id}),
     });
 
     if (!response.ok) {
