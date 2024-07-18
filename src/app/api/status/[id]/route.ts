@@ -13,6 +13,7 @@ export async function POST(req:Request) {
     const uid = purl.searchParams.get("uid");
     console.log("uid "+uid)
     const id = purl.searchParams.get("id");
+    console.log("id "+id)
 
     const data = await req.formData();
     console.log("Form Data:", data);
