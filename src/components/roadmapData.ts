@@ -16,7 +16,7 @@ export const Roadmap = [
         description: 'Data scientists analyze complex data to uncover insights that drive decision-making and innovation.',
         href:"/roadmaps/datascientist",
         duration: 'Varies',
-        price: 49900,
+        price: 100,
         completed: false,
         buy: false,
         src: "/images/DS.png"
