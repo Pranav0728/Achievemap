@@ -50,15 +50,18 @@ export async function POST(req:Request) {
     const transactionStatus = response.data.code === "PAYMENT_SUCCESS" ? "SUCCESS" : "FAILURE";
 
     // Update user's purchase status in database
-    const updatedUser = await User.findOneAndUpdate(
-      { _id: uid, 'purchases.roadmapId': id },
-      { $set: { 'purchases.$.status': transactionStatus, 'purchases.$.updatedAt': new Date() } },
-      { new: true }
-    );
-
-    if (!updatedUser) {
-      console.error(`User ${uid} or purchase ${id} not found.`);
-      return NextResponse.redirect(`${process.env.NEXTAUTH_URL}/failure`, { status: 301 });
+    const user = await User.findOne({ _id: uid });
+    if (user) {
+      user.purchases.push({
+        roadmapId: id,
+        amount:20,
+        status: transactionStatus,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      });
+      await user.save();
+    } else {
+      console.log("Couldn't find")
     }
 
     // Redirect based on transaction status
