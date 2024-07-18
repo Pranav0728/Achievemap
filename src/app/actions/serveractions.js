@@ -1,7 +1,6 @@
 "use server";
 import { v4 as uuidv4 } from "uuid";
 import sha256 from "crypto-js/sha256";
-import User from "@/lib/models/users";
 
 export async function payment(amount, uid, id) {
   const transactionId = "Tr-" + uuidv4().toString(36).slice(-6);
@@ -20,19 +19,11 @@ export async function payment(amount, uid, id) {
   };
 
   const dataPayload = JSON.stringify(payload);
-  console.log("Payload:", dataPayload);
-
   const dataBase64 = Buffer.from(dataPayload).toString("base64");
-  console.log("Base64 Payload:", dataBase64);
-
   const fullURL = dataBase64 + "/pg/v1/pay" + process.env.NEXT_PUBLIC_SALT_KEY;
   const dataSha256 = sha256(fullURL).toString();
   const checksum = dataSha256 + "###" + process.env.NEXT_PUBLIC_SALT_INDEX;
-  console.log("Checksum:", checksum);
-
   const UAT_PAY_API_URL = `${process.env.NEXT_PUBLIC_UAT_ID}/pg/v1/pay`;
-  console.log("UAT_PAY_API_URL:", UAT_PAY_API_URL);
-
   try {
     const response = await fetch(UAT_PAY_API_URL, {
       method: "POST",

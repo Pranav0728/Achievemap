@@ -4,8 +4,6 @@ import { useSearchParams, useRouter } from "next/navigation";
 import { Roadmap } from "@/components/roadmapData";
 import { HomeHeader } from "@/components/common/HomeHeader";
 import { Footer } from "@/components/common/footer";
-import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import Container from "@/components/container";
@@ -17,8 +15,6 @@ export default function CheckoutPage() {
   const id = searchParams.get("id");
   const uid = searchParams.get("uid");
   const data = Roadmap.find((item) => item.id === id);
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
   const [error, setError] = useState("");
   const router = useRouter();
   const amount = data?.price;
@@ -45,31 +41,16 @@ export default function CheckoutPage() {
             {data ? (
               <>
                 <h2 className="text-xl font-bold mb-4">{data.title} Roadmap</h2>
-                <p className="mb-4">Price: rs{data.price / 100}/-</p>
+                <p className="mb-4">Price: rs {data.price / 100}/-</p>
                 <p className="mb-4">{data.description}</p>
+                  <h2 className="text-xl font-bold mb-4">Topics Cover: </h2>
                 <form className="grid grid-cols-2 gap-4" onSubmit={handlePurchase}>
-                  <div className="col-span-2">
-                    <Label htmlFor="name">Name</Label>
-                    <Input
-                      id="name"
-                      value={name}
-                      onChange={(e) => setName(e.target.value)}
-                      placeholder="Enter your name"
-                    />
-                  </div>
-                  <div className="col-span-2">
-                    <Label htmlFor="email">Email</Label>
-                    <Input
-                      id="email"
-                      type="email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      placeholder="Enter your email"
-                    />
+                  <div className="flex flex-col">
+                  {data.whatdoyoulearn }
                   </div>
                   <div className="col-span-2 flex justify-end">
                     <Button type="submit" size="lg">
-                      Place Order
+                      Buy
                     </Button>
                   </div>
                   {error && <p className="col-span-2 text-red-500">{error}</p>}

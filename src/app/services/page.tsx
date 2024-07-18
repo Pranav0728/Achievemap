@@ -1,4 +1,3 @@
-// Example frontend component in Next.js (/pages/index.tsx or another relevant page)
 'use client'
 import Container from "../../components/container";
 import React, { useEffect, useState } from "react";
@@ -22,6 +21,7 @@ export default function Page() {
   const searchParams = useSearchParams();
   const uid = searchParams.get("uid") as string; // Type assertion for uid
   const [purchasedRoadmapIds, setPurchasedRoadmapIds] = useState<string[]>([]);
+  const [loading, setLoading] = useState(true); // State for loading indicator
 
   useEffect(() => {
     if (uid) {
@@ -32,15 +32,13 @@ export default function Page() {
   const fetchPurchasedRoadmaps = async () => {
     try {
       const response = await fetch(`/api/getPurchasedRoadmaps?uid=${uid}`);
-      // if (!response.ok) {
-      //   throw new Error("Failed to fetch purchased roadmaps");
-      // }
       const data = await response.json();
       const purchasedIds = data.roadmaps.map((roadmap: any) => roadmap.roadmapId);
       setPurchasedRoadmapIds(purchasedIds);
+      setLoading(false); // Set loading to false after data is fetched
     } catch (error) {
       console.error("Error fetching purchased roadmaps:", error);
-      // Handle error condition, possibly show an error message
+      setLoading(false); // Set loading to false in case of error as well
     }
   };
 
@@ -48,8 +46,7 @@ export default function Page() {
     try {
       const response = await fetch(`/api/checkPurchaseStatus?uid=${uid}&id=${id}`);
       const data = await response.json();
-      if(data.message === "Roadmap not purchased")
-      {
+      if (data.message === "Roadmap not purchased") {
         router.push(`/checkout?uid=${uid}&id=${id}`);
         return;
       }
@@ -58,9 +55,6 @@ export default function Page() {
       } else {
         router.push(`/checkout?uid=${uid}&id=${id}`); // Redirect to checkout if purchase status is not success
       }
-      // if (!response.ok) {
-      //   throw new Error(`Failed to fetch purchase status, status: ${response.status}`);
-      // }
     } catch (error) {
       console.error("Error checking purchase status:", error);
       // Handle error condition, possibly redirect to a failure page or show an error message
@@ -78,38 +72,42 @@ export default function Page() {
             Unlock Your Career Path 🌟 Get Your Ultimate Roadmap Today!
           </Typography>
         </div>
-        <div className="m-3">
-          {Roadmap.map((data) => (
-            <div
-              className="mt-5 flex flex-col md:flex-row justify-center w-full"
-              key={data.id}
-            >
-              <Image
-                src={data.src}
-                width={400}
-                height={150}
-                className="hidden sm:block rounded-lg md:rounded-r-none"
-                alt="Roadmap img"
-              />
-              <Card className="w-full rounded-r-lg">
-                <CardHeader>
-                  <CardTitle>{data.title} Roadmap</CardTitle>
-                  <CardDescription>{data.description}</CardDescription>
-                </CardHeader>
-                <CardFooter className="flex justify-between">
-                  <Typography variant="p">{isPurchased(data.id) ? "Purchased" : `Price: ${data.price / 100} rs/-`}</Typography>
-                  <Button
-                    onClick={() => CheckOutClick(data.id, data.href)}
-                  >
-                    <Typography variant="p">
-                      {isPurchased(data.id) ? "Open" : "Buy Roadmap"}
-                    </Typography>
-                  </Button>
-                </CardFooter>
-              </Card>
-            </div>
-          ))}
-        </div>
+        {loading ? (
+          <div className="m-3 text-center">Loading...</div>
+        ) : (
+          <div className="m-3">
+            {Roadmap.map((data) => (
+              <div
+                className="mt-5 flex flex-col md:flex-row justify-center w-full"
+                key={data.id}
+              >
+                <Image
+                  src={data.src}
+                  width={400}
+                  height={150}
+                  className="hidden sm:block rounded-lg md:rounded-r-none"
+                  alt="Roadmap img"
+                />
+                <Card className="w-full rounded-r-lg">
+                  <CardHeader>
+                    <CardTitle>{data.title} Roadmap</CardTitle>
+                    <CardDescription>{data.description}</CardDescription>
+                  </CardHeader>
+                  <CardFooter className="flex justify-between">
+                    <Typography variant="p">{isPurchased(data.id) ? "Purchased" : `Price: ${data.price / 100} rs/-`}</Typography>
+                    <Button
+                      onClick={() => CheckOutClick(data.id, data.href)}
+                    >
+                      <Typography variant="p">
+                        {isPurchased(data.id) ? "Open" : "Buy Roadmap"}
+                      </Typography>
+                    </Button>
+                  </CardFooter>
+                </Card>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </Container>
   );
