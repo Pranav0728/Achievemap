@@ -15,6 +15,8 @@ export async function payment(amount, uid, id) {
     redirectMode: "POST",
     callbackUrl: `${process.env.NEXTAUTH_URL}/api/status/${transactionId}?uid=${uid}&id=${id}`,
     mobileNumber: "9999999999",
+    uid:uid,
+    id:id,
     paymentInstrument: {
       type: "PAY_PAGE",
     },
@@ -42,7 +44,7 @@ export async function payment(amount, uid, id) {
         "Content-Type": "application/json",
         "X-VERIFY": checksum,
       },
-      body: JSON.stringify({ request: dataBase64,uid,id}),
+      body: JSON.stringify({ request: dataBase64}),
     });
 
     if (!response.ok) {
