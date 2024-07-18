@@ -23,16 +23,17 @@ export const Roadmap = [
         "src": "/images/DS.png",
         "whatdoyoulearn": "Data analysis, statistical modeling | Machine learning techniques | Advanced data handling using Python libraries like Pandas and Numpy | SQL for data manipulation and visualization techniques."
     },
-    // {
-    //     id:"n8R4zK3du5Q1",
-    //     title: 'Testing',
-    //     description: 'Testing',
-    //     href:"/roadmaps/test",
-    //     duration: 'Varies',
-    //     price: 100,
-    //     completed: false,
-    //     buy: false,
-    // },
+    {
+        id:"n8R4zK3du5Q1",
+        title: 'Testing',
+        description: 'Testing',
+        href:"/roadmaps/test",
+        duration: 'Varies',
+        price: 100,
+        completed: false,
+        buy: false,
+        src:"/images/demo.png"
+    },
     // {
     //     id:"n8R4zK3Yt5Q1",
     //     title: 'MERN stack',

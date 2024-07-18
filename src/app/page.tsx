@@ -8,8 +8,10 @@ import Feature from "./features";
 import { Button } from "@/components/ui/button";
 import CareerDropdown from "@/components/combobox";
 import { HomeHeader } from "@/components/common/HomeHeader";
+import { useSession } from "next-auth/react";
 
 export default function Home() {
+  const { data: session } = useSession();
   return (
     <>
       {/* <Header /> */}
@@ -31,7 +33,7 @@ export default function Home() {
               with a clear and structured plan.
             </Typography>
             <CareerDropdown/>
-            <Link href="/services">
+            <Link href= {`/services?uid=${session?.user.id}`}>
               <Button size="tiny" variant="default">
                 Get Roadmap
               </Button>
