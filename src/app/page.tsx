@@ -1,3 +1,4 @@
+"use client"
 import * as React from "react";
 import { ArrowRight, BookOpen, Shield } from "lucide-react";
 import Link from "next/link";
@@ -12,6 +13,7 @@ import { useSession } from "next-auth/react";
 
 export default function Home() {
   const { data: session } = useSession();
+  const href= `/services/?uid=${session?.user.id}`
   return (
     <>
       {/* <Header /> */}
@@ -33,7 +35,7 @@ export default function Home() {
               with a clear and structured plan.
             </Typography>
             <CareerDropdown/>
-            <Link href= {`/services?uid=${session?.user.id}`}>
+            <Link href= {href}>
               <Button size="tiny" variant="default">
                 Get Roadmap
               </Button>
