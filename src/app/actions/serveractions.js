@@ -27,13 +27,12 @@ export async function payment(amount, uid, id) {
   console.log("Base64 Payload:", dataBase64);
 
   const fullURL = dataBase64 + "/pg/v1/pay" + process.env.NEXT_PUBLIC_SALT_KEY;
-  const dataSha256 = sha256(fullURL).toString();
-  const checksum = `${dataSha256}###${process.env.NEXT_PUBLIC_SALT_INDEX}`;
+  const dataSha256 = sha256(fullURL);
+  const checksum = dataSha256 + "###" + process.env.NEXT_PUBLIC_SALT_INDEX;
   console.log("Checksum:", checksum);
 
   const UAT_PAY_API_URL = `${process.env.NEXT_PUBLIC_UAT_ID}/pg/v1/pay`;
-  console.log(UAT_PAY_API_URL);
-
+  console.log(UAT_PAY_API_URL)
   try {
     const response = await fetch(UAT_PAY_API_URL, {
       method: "POST",
@@ -51,13 +50,6 @@ export async function payment(amount, uid, id) {
     }
 
     const responseData = await response.json();
-    console.log("Response Data:", responseData);
-
-    // Check if responseData contains the expected structure
-    if (!responseData.data || !responseData.data.instrumentResponse || !responseData.data.instrumentResponse.redirectInfo) {
-      throw new Error("Invalid response structure from payment API");
-    }
-
     const redirect = responseData.data.instrumentResponse.redirectInfo.url;
 
     // Store initial transaction details in the database
@@ -74,10 +66,10 @@ export async function payment(amount, uid, id) {
       });
       await user.save();
     } else {
-      console.log("Couldn't find user");
+      console.log("Couldn't find")
     }
-
-    return redirect ;
+    console.log(redirect)
+    return { url: redirect };
   } catch (error) {
     console.error("Error:", error.message);
     throw error;
