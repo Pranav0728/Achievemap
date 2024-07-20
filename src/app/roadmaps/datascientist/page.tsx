@@ -71,19 +71,6 @@ export default function Page() {
                   </Link>
                 </li>
               </ul>
-              <li className="m-1">Track B (Affordable Fees)</li>
-              <ul className="list-disc md:ml-10 ml-5">
-                <li className="m-1">
-                  Python course:{" "}
-                  <Link
-                    className="text-blue-700"
-                    target="_blank"
-                    href="https://codebasics.io/courses/python-for-beginner-and-intermediate-learners"
-                  >
-                    https://codebasics.io/courses/python-for-beginner-and-intermediate-learners
-                  </Link>
-                </li>
-              </ul>
             </ul>
 
             <Typography variant="h5">LinkedIn - Core Skill</Typography>
@@ -96,12 +83,6 @@ export default function Page() {
                   Have a clear profile picture and banner image.
                 </li>
                 <li className="m-1">Add tags such as: Open to work etc.</li>
-                <li className="m-1">
-                  Use this LinkedIn Checklist to create a profile:{" "}
-                  <Link className="text-blue-700" target="_blank" href="#">
-                    Click here
-                  </Link>
-                </li>
               </ul>
             </ul>
 
@@ -180,7 +161,6 @@ export default function Page() {
                   Start following prominent data science influencers.
                 </li>
                 <li className="m-1">
-                  Daliana Liu:{" "}
                   <Link
                     className="text-blue-700"
                     target="_blank"
@@ -190,7 +170,6 @@ export default function Page() {
                   </Link>
                 </li>
                 <li className="m-1">
-                  Nitin Aggarwal:{" "}
                   <Link
                     className="text-blue-700"
                     target="_blank"
@@ -200,7 +179,6 @@ export default function Page() {
                   </Link>
                 </li>
                 <li className="m-1">
-                  Steve Nouri:{" "}
                   <Link
                     className="text-blue-700"
                     target="_blank"
@@ -210,7 +188,6 @@ export default function Page() {
                   </Link>
                 </li>
                 <li className="m-1">
-                  Dhaval Patel:{" "}
                   <Link
                     className="text-blue-700"
                     target="_blank"
@@ -261,16 +238,6 @@ export default function Page() {
                     href="https://bit.ly/3I70EbI"
                   >
                     https://bit.ly/3I70EbI
-                  </Link>
-                </li>
-                <li className="m-1">
-                  Join codebasics discord server:{" "}
-                  <Link
-                    className="text-blue-700"
-                    target="_blank"
-                    href="https://discord.gg/r42Kbuk"
-                  >
-                    https://discord.gg/r42Kbuk
                   </Link>
                 </li>
               </ul>

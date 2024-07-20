@@ -23,7 +23,7 @@ export default function Home() {
           className="max-w-lg md:max-w-2xl text-2xl md:text-4xl"
           variant="h1"
         >
-          Your Personalized Roadmap to Success
+          Simple Steps to Reach Your Goals
         </Typography>
         <div className="flex gap-6 items-center flex-col md:flex-row max-w-screen-lg">
           <div className="flex flex-col gap-6 items-center">

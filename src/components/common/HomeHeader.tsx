@@ -21,7 +21,6 @@ import { signOut, useSession } from "next-auth/react";
 import Profile from "./Profile";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useState } from "react";
-import { title } from "process";
 
 
 interface SidebarProps extends React.HTMLAttributes<HTMLDivElement> {}
