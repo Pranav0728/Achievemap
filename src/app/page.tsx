@@ -66,7 +66,7 @@ export default function Home() {
               className="max-w-lg md:max-w-2xl text-base md:text-lg mx-10"
               variant="p"
             >
-              With over 6-7 years of coding experience, I've learned a lot through countless mistakes. Each error taught me valuable lessons, and I want to help you avoid those pitfalls. That's why I created these roadmaps. They’re designed to save you time, streamline your learning, and keep you motivated with inspiring videos. Let’s make your journey to success smoother and more efficient together!
+              With over 6-7 years of coding experience, I&apos;ve learned a lot through countless mistakes. Each error taught me valuable lessons, and I want to help you avoid those pitfalls. That&apos;s why I created these roadmaps. They&apos;re designed to save you time, streamline your learning, and keep you motivated with inspiring videos. Let&apos;s make your journey to success smoother and more efficient together!
             </Typography>
             <div className="flex flex-col md:flex-row gap-12 items-center md:mb-20">
               <Feature

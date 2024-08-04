@@ -14,7 +14,7 @@ export default function Page() {
             <Typography variant="h2">React.js Roadmap for Beginners</Typography>
             <p>
               This roadmap will guide you through the essential concepts and
-              tools needed to master React.js. Whether you're a total beginner
+              tools needed to master React.js. Whether you&apos;re a total beginner
               or have some programming experience, this path will help you
               develop a strong foundation in building dynamic and interactive
               web applications.
