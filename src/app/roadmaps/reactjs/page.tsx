@@ -11,15 +11,18 @@ export default function Page() {
         <HomeHeader />
         <div className="flex flex-col h-full w-full items-center px-5">
           <section className="flex flex-col gap-5 w-full md:max-w-screen-md p-5 md:p-10 border-x">
-            <Typography variant="h2">
-              React.js Roadmap for Beginners
-            </Typography>
+            <Typography variant="h2">React.js Roadmap for Beginners</Typography>
             <p>
-              This roadmap will guide you through the essential concepts and tools needed to master React.js. Whether you're a total beginner or have some programming experience, this path will help you develop a strong foundation in building dynamic and interactive web applications.
+              This roadmap will guide you through the essential concepts and
+              tools needed to master React.js. Whether you're a total beginner
+              or have some programming experience, this path will help you
+              develop a strong foundation in building dynamic and interactive
+              web applications.
             </p>
             <p>
               Total Duration: 4 Months
-              <br />3 hours in Technical Skills + 1 hour in Core Skills = 4 hours study Every Day
+              <br />3 hours in Technical Skills + 1 hour in Core Skills = 4
+              hours study Every Day
             </p>
             <Image
               src="/images/reactjs.png"
@@ -28,16 +31,24 @@ export default function Page() {
               alt="React.js logo"
               className="w-full"
             />
-            
+
             {/* Week 1 and 2 */}
-            <Typography variant="h3">Week 1 and 2: HTML, CSS, JavaScript</Typography>
+            <Typography variant="h3">
+              Week 1 and 2: HTML, CSS, JavaScript
+            </Typography>
             <hr />
             <Typography variant="h5">Topics</Typography>
             <ul className="list-disc md:ml-10 ml-5">
-              <li className="m-1">HTML Basics: Elements, Attributes, Structure</li>
+              <li className="m-1">
+                HTML Basics: Elements, Attributes, Structure
+              </li>
               <li className="m-1">CSS Basics: Selectors, Box Model, Flexbox</li>
-              <li className="m-1">JavaScript Basics: Variables, Data Types, Operators</li>
-              <li className="m-1">JavaScript Control Flow: Conditionals, Loops</li>
+              <li className="m-1">
+                JavaScript Basics: Variables, Data Types, Operators
+              </li>
+              <li className="m-1">
+                JavaScript Control Flow: Conditionals, Loops
+              </li>
               <li className="m-1">JavaScript Functions and Events</li>
             </ul>
 
@@ -118,7 +129,7 @@ export default function Page() {
             <Typography variant="h5">Motivation</Typography>
             <ul className="list-disc md:ml-10 ml-5">
               <li className="m-1">
-              How Can Non Technical People Learn To Code?:{" "}
+                How Can Non Technical People Learn To Code?:{" "}
                 <Link
                   className="text-blue-700"
                   target="_blank"
@@ -138,7 +149,7 @@ export default function Page() {
                 Implement JavaScript for form validation or simple interactions.
               </li>
               <li className="m-1">
-              Practice on Freecodecamp:{" "}
+                Practice on Freecodecamp:{" "}
                 <Link
                   className="text-blue-700"
                   target="_blank"
@@ -150,7 +161,9 @@ export default function Page() {
             </ul>
 
             {/* Week 3 and 4 */}
-            <Typography variant="h3">Week 3 and 4: Advanced JavaScript and ES6</Typography>
+            <Typography variant="h3">
+              Week 3 and 4: Advanced JavaScript and ES6
+            </Typography>
             <hr />
             <Typography variant="h5">Topics</Typography>
             <ul className="list-disc md:ml-10 ml-5">
@@ -229,13 +242,16 @@ export default function Page() {
             <Typography variant="h5">Core Skill: Communication</Typography>
             <ul className="list-disc md:ml-10 ml-5">
               <li className="m-1">
-                Enhance your communication skills by explaining React concepts to peers.
+                Enhance your communication skills by explaining React concepts
+                to peers.
               </li>
               <li className="m-1">
-                <Link className="text-blue-700"
+                <Link
+                  className="text-blue-700"
                   target="_blank"
-                   href="https://www.linkedin.com">
-                    LinkedIn
+                  href="https://www.linkedin.com"
+                >
+                  LinkedIn
                 </Link>
               </li>
             </ul>
@@ -248,7 +264,9 @@ export default function Page() {
             </ul>
 
             {/* Week 7 and 8 */}
-            <Typography variant="h3">Week 7 and 8: React Hooks and Advanced Concepts</Typography>
+            <Typography variant="h3">
+              Week 7 and 8: React Hooks and Advanced Concepts
+            </Typography>
             <hr />
             <Typography variant="h5">Topics</Typography>
             <ul className="list-disc md:ml-10 ml-5">
@@ -276,7 +294,8 @@ export default function Page() {
             <Typography variant="h5">Core Skill: Teamwork</Typography>
             <ul className="list-disc md:ml-10 ml-5">
               <li className="m-1">
-                Collaborate with others on a React project to enhance teamwork skills.
+                Collaborate with others on a React project to enhance teamwork
+                skills.
               </li>
             </ul>
 
@@ -288,14 +307,18 @@ export default function Page() {
             </ul>
 
             {/* Week 9 and 10 */}
-            <Typography variant="h3">Week 9 and 10: State Management and Testing</Typography>
+            <Typography variant="h3">
+              Week 9 and 10: State Management and Testing
+            </Typography>
             <hr />
             <Typography variant="h5">Topics</Typography>
             <ul className="list-disc md:ml-10 ml-5">
               <li className="m-1">Redux for State Management</li>
               <li className="m-1">Integrating Redux with React</li>
               <li className="m-1">Unit Testing React Components</li>
-              <li className="m-1">Testing Libraries: Jest, React Testing Library</li>
+              <li className="m-1">
+                Testing Libraries: Jest, React Testing Library
+              </li>
               <li className="m-1">End-to-End Testing with Cypress</li>
             </ul>
 
@@ -328,7 +351,9 @@ export default function Page() {
             </ul>
 
             {/* Week 11 and 12 */}
-            <Typography variant="h3">Week 11 and 12: Advanced Topics and Deployment</Typography>
+            <Typography variant="h3">
+              Week 11 and 12: Advanced Topics and Deployment
+            </Typography>
             <hr />
             <Typography variant="h5">Topics</Typography>
             <ul className="list-disc md:ml-10 ml-5">
@@ -340,7 +365,7 @@ export default function Page() {
 
             <Typography variant="h5">Learning Resources</Typography>
             <ul className="list-disc md:ml-10 ml-5">
-            <li className="m-1">
+              <li className="m-1">
                 What is CI/CD:{" "}
                 <Link
                   className="text-blue-700"
@@ -351,7 +376,7 @@ export default function Page() {
                 </Link>
               </li>
               <li className="m-1">
-               Deploy react app to production (Vercel) :{" "}
+                Deploy react app to production (Vercel) :{" "}
                 <Link
                   className="text-blue-700"
                   target="_blank"
@@ -372,7 +397,8 @@ export default function Page() {
             <Typography variant="h5">Assignment</Typography>
             <ul className="list-disc md:ml-10 ml-5">
               <li className="m-1">
-                Deploy a complete React application and share it with your network.
+                Deploy a complete React application and share it with your
+                network.
               </li>
             </ul>
           </section>
