@@ -1,8 +1,8 @@
-"use client"
+"use client";
 import * as React from "react";
 import { ArrowRight, BookOpen, Shield } from "lucide-react";
 import Link from "next/link";
-import { Header } from "@/components/common/header";
+import { Header } from "@/components/common/header"; // Ensure Header is used or remove import
 import { Footer } from "@/components/common/footer";
 import Typography from "../components/ui/typography";
 import Feature from "./features";
@@ -13,11 +13,13 @@ import { useSession } from "next-auth/react";
 
 export default function Home() {
   const { data: session } = useSession();
-  const href= `/services/?uid=${session?.user.id}`
+  const href = `/services/?uid=${session?.user.id}`;
+
   return (
     <>
+      {/* Uncomment Header if needed */}
       {/* <Header /> */}
-      <HomeHeader/>
+      <HomeHeader />
       <div className="flex flex-col h-full pt-20 pb-24 px-4 md:py-26 md:px-32 w-full items-center text-center gap-12">
         <Typography
           className="max-w-lg md:max-w-2xl text-2xl md:text-4xl"
@@ -34,8 +36,8 @@ export default function Home() {
               Your Blueprint for Success in Every Field. Achieve your dreams
               with a clear and structured plan.
             </Typography>
-            <CareerDropdown/>
-            <Link href= {href}>
+            <CareerDropdown />
+            <Link href={href}>
               <Button size="tiny" variant="default">
                 Get Roadmap
               </Button>
