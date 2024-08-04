@@ -25,6 +25,18 @@ export const Roadmap = [
         "whatdoyoulearn": "Data analysis, statistical modeling | Machine learning techniques | Advanced data handling using Python libraries like Pandas and Numpy | SQL for data manipulation and visualization techniques."
     },
     {
+        "id": "n8R4fdsesxafu5Q1",
+        "title": "Reactjs",
+        "description": "Master React.js and build dynamic, responsive web applications.",
+        "href": "/roadmaps/reactjs",
+        "duration": "Varies",
+        "price": 1900,
+        "completed": false,
+        "buy": false,
+        "src": "/images/reactjs.png",
+        "whatdoyoulearn": "HTML | CSS | JavaScript | ES6+ | JSX | Components | State Management | React Hooks | Routing | Redux | Context API | React Router | Testing | Performance Optimization"
+    },
+    {
         id:"n8R4zK3du5Q1",
         title: 'Testing',
         description: 'Testing',
