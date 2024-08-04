@@ -30,7 +30,7 @@ export const Roadmap = [
         "description": "Master React.js and build dynamic, responsive web applications.",
         "href": "/roadmaps/reactjs",
         "duration": "Varies",
-        "price": 1900,
+        "price": 200,
         "completed": false,
         "buy": false,
         "src": "/images/reactjs.png",
